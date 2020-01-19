@@ -11,13 +11,7 @@
 
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-#font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:Overpass Heavy, Font Awesome 8
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -36,11 +30,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id "ulauncher --no-window-shadow"
 
 # change focus
 bindsym $mod+j focus left
@@ -165,11 +155,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Auto-adapt screen layout
-bindsym XF86Display exec --no-startup-id autorandr --change --default mobile
+bindsym XF86Display exec --no-startup-id $HOME/.config/scripts/update_screens.sh
 bindsym $mod+XF86Display exec --no-startup-id arandr
 
 # Pleasant working when it's late
 exec --no-startup-id redshift-gtk
+
+# Dropdown terminal
+exec --no-startup-id guake
 
 # Tab through current windows on workspace
 bindsym $mod+Tab focus right
@@ -182,7 +175,7 @@ workspace_layout tabbed
 hide_edge_borders smart
 
 # Use polybar in favor of i3bar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/scripts/launch_polybar.sh
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
 for_window [class="^Steam$" title="^Friends$"] floating enable
@@ -196,9 +189,22 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
-# Colors
-for_window [class="(?i)firefox"] title_format "<span foreground='orange' background='black' size='xx-large' weight='heavy'>🦊</span> %title"
-for_window [class="(?i)VSCodium"] title_format "<span foreground='purple'>▉</span> %title"
+# Title bar icons
+# Adapted from https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6
+for_window [class="(?i)firefox"] title_format "<tt></tt><span foreground='#FF6611'>  </span><tt> </tt>%title"
+for_window [class="(.*)terminal(.*)"] title_format "<tt></tt><span foreground='#00FF00' background='#000000'>  </span><tt> </tt>%title"
+for_window [class="(.*)Chromium-browser(.*)"] title_format "<tt></tt><span foreground='#367dd0' background='#d9e5f4'>  </span><tt> </tt>%title"
+for_window [class="Evolution"] title_format "<tt></tt><span foreground='#FFFFFF' >  </span><tt> </tt>%title"
+for_window [title=".* Evolution"] title_format "<tt></tt><span foreground='#FFFFFF' >  </span><tt> </tt>%title"
+for_window [class="Slack"] title_format "<tt></tt><span foreground='#FFFFFF' >  </span><tt> </tt>%title"
+for_window [class="Signal"] title_format "<tt></tt><span background='#2090ea' foreground='#FFFFFF' >  </span><tt> </tt>%title"
+for_window [class="VirtualBox Machine"] title_format "<tt></tt><span  background='#073624' foreground='#AAAAFF' >  </span><tt> </tt>%title"
+for_window [class="VirtualBox Manager"] title_format "<tt></tt><span  background='#073642' foreground='#AAAAFF' >  </span><tt> </tt>%title"
+for_window [class="libreoffice-writer"] title_format "<tt></tt><span  background='#073642' foreground='#adc5e7' >  </span><tt> </tt>%title"
+for_window [class="libreoffice-calc"] title_format "<tt></tt><span  background='#073642' foreground='#add58a' >  </span><tt> </tt>%title"
+for_window [class="libreoffice-impress"] title_format "<tt></tt><span  background='#073642' foreground='#d07e7e' >  </span><tt> </tt>%title"
+for_window [class="(?i)VSCodium"] title_format "<tt></tt><span  foreground='#b138cf' >  </span><tt> </tt>%title"
+
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -206,11 +212,15 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec $HOME/.config/screen_brightness/screen_brightness.py -inc
-bindsym XF86MonBrightnessDown exec $HOME/.config/screen_brightness/screen_brightness.py -dec
+bindsym XF86MonBrightnessUp exec $HOME/.config/scripts/screen_brightness.py -inc
+bindsym XF86MonBrightnessDown exec $HOME/.config/scripts/screen_brightness.py -dec
 
 # Super+E launches thunar
 bindsym $mod+e exec thunar
+
+# Screenshots (full screen and window)
+bindsym Print exec xfce4-screenshooter -f
+bindsym $mod+Print exec xfce4-screenshooter -w
 
 # i3dropdown setup - see https://gitlab.com/exrok/i3dropdown
 # TODO THIS DOES NOT WORK YET
