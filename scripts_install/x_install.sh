@@ -3,6 +3,7 @@ sudo add-apt-repository ppa:agornostal/ulauncher -y
 sudo apt update
 
 # basic stuff
+install compton
 install guake
 install redshift-gtk
 install ulauncher

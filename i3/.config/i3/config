@@ -161,6 +161,9 @@ bindsym $mod+XF86Display exec --no-startup-id arandr
 # Pleasant working when it's late
 exec --no-startup-id redshift-gtk
 
+# Bit of eyecandy
+exec --no-startup-id compton
+
 # Dropdown terminal
 exec --no-startup-id guake
 
@@ -221,11 +224,3 @@ bindsym $mod+e exec thunar
 # Screenshots (full screen and window)
 bindsym Print exec xfce4-screenshooter -f
 bindsym $mod+Print exec xfce4-screenshooter -w
-
-# i3dropdown setup - see https://gitlab.com/exrok/i3dropdown
-# TODO THIS DOES NOT WORK YET
-exec --no-startup-id id3 --get-socketpath > /tmp/i3wm-socket-path
-for_window [instance="ddterminal"] floating enable;
-bindsym $mod+F12 exec --no-startup-id i3dropdown ddterminal \
-    "urxvtc -name ddterminal -background rgba:1000/1000/1000/D000 \
-    -internalBorder 4 -e dash -c '/bin/sh'"
