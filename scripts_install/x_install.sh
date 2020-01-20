@@ -14,6 +14,9 @@ install ulauncher
 install python3-pip
 sudo pip3 install -y autorandr
 
+# manually:
+# https://github.com/yvbbrjdr/i3lock-fancy-rapid
+
 # applications
 install gimp
 install firefox

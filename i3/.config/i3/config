@@ -32,12 +32,6 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id "ulauncher --no-window-shadow"
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+odiaeresis focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -166,6 +160,9 @@ exec --no-startup-id compton
 
 # Dropdown terminal
 exec --no-startup-id guake
+
+# Lockscreen
+bindsym $mod+l exec --no-startup-id i3lock-fancy-rapid 11 3
 
 # Tab through current windows on workspace
 bindsym $mod+Tab focus right
