@@ -204,7 +204,9 @@ for_window [class="libreoffice-writer"] title_format "<tt></tt><span  background
 for_window [class="libreoffice-calc"] title_format "<tt></tt><span  background='#073642' foreground='#add58a' >  </span><tt> </tt>%title"
 for_window [class="libreoffice-impress"] title_format "<tt></tt><span  background='#073642' foreground='#d07e7e' >  </span><tt> </tt>%title"
 for_window [class="(?i)VSCodium"] title_format "<tt></tt><span  foreground='#b138cf' >  </span><tt> </tt>%title"
-
+for_window [class="(?i)Thunar"] title_format "<tt></tt><span  foreground='#84ca3c' >  </span><tt> </tt>%title"
+for_window [class="(?i)GIMP"] title_format "<tt></tt><span  foreground='#dfc900' >  </span><tt> </tt>%title"
+for_window [class="(?i)Krita"] title_format "<tt></tt><span  foreground='#3e45ff' >  </span><tt> </tt>%title"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -221,3 +223,6 @@ bindsym $mod+e exec thunar
 # Screenshots (full screen and window)
 bindsym Print exec xfce4-screenshooter -f
 bindsym $mod+Print exec xfce4-screenshooter -w
+
+# Wallpaper
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpaper/wp.jpg
