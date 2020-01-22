@@ -3,6 +3,7 @@ sudo add-apt-repository ppa:agornostal/ulauncher -y
 sudo apt update
 
 # basic stuff
+install i3-wm
 install compton
 install guake
 install redshift-gtk
@@ -17,6 +18,7 @@ sudo pip3 install -y autorandr
 
 # manually:
 # https://github.com/yvbbrjdr/i3lock-fancy-rapid
+# https://github.com/polybar/polybar
 
 # applications
 install gimp
