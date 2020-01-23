@@ -189,6 +189,10 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
+# floating modifier for applets started via polybar
+for_window [title="^Volume Control"] floating enable
+for_window [title="^YAD Calendar"] floating enable
+
 # Title bar icons
 # Adapted from https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6
 for_window [class="(?i)firefox"] title_format "<tt></tt><span foreground='#FF6611'>  </span><tt> </tt>%title"

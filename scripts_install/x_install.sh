@@ -8,6 +8,7 @@ install compton
 install guake
 install redshift-gtk
 install feh
+install yad
 install ulauncher
 # manually add extensions to ulauncher:
 # https://github.com/ulauncher/ulauncher-timer
