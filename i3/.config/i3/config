@@ -29,8 +29,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id "ulauncher --no-window-shadow"
+# start program launcher
+bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+Shift+d exec --no-startup-id rofi -show window
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -177,7 +178,7 @@ hide_edge_borders smart
 # Use polybar in favor of i3bar
 exec_always --no-startup-id $HOME/.config/scripts/launch_polybar.sh
 
-# https://github.com/ValveSoftware/steam-for-linux/issues/1040
+# See https://github.com/ValveSoftware/steam-for-linux/issues/1040
 for_window [class="^Steam$" title="^Friends$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
@@ -207,8 +208,8 @@ for_window [class="VirtualBox Manager"] title_format "<tt></tt><span  background
 for_window [class="libreoffice-writer"] title_format "<tt></tt><span  background='#073642' foreground='#adc5e7' >  </span><tt> </tt>%title"
 for_window [class="libreoffice-calc"] title_format "<tt></tt><span  background='#073642' foreground='#add58a' >  </span><tt> </tt>%title"
 for_window [class="libreoffice-impress"] title_format "<tt></tt><span  background='#073642' foreground='#d07e7e' >  </span><tt> </tt>%title"
-for_window [class="(?i)VSCodium"] title_format "<tt></tt><span  foreground='#b138cf' >  </span><tt> </tt>%title"
-for_window [class="(?i)Thunar"] title_format "<tt></tt><span  foreground='#84ca3c' >  </span><tt> </tt>%title"
+for_window [class="VSCodium"] title_format "<tt></tt><span  foreground='#b138cf' >  </span><tt> </tt>%title"
+for_window [class="Thunar"] title_format "<tt></tt><span  foreground='#84ca3c' >  </span><tt> </tt>%title"
 for_window [class="(?i)GIMP"] title_format "<tt></tt><span  foreground='#dfc900' >  </span><tt> </tt>%title"
 for_window [class="(?i)Krita"] title_format "<tt></tt><span  foreground='#3e45ff' >  </span><tt> </tt>%title"
 

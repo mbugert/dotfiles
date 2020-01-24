@@ -1,20 +1,13 @@
-sudo add-apt-repository ppa:agornostal/ulauncher -y
-
 sudo apt update
 
 # basic stuff
-install i3-wm
-install compton
-install guake
-install redshift-gtk
-install feh
-install yad
-install ulauncher
-# manually add extensions to ulauncher:
-# https://github.com/ulauncher/ulauncher-timer
-# https://github.com/iboyperson/ulauncher-system
-# https://github.com/isacikgoz/ukill
-install python3-pip
+sudo apt install i3-wm
+sudo apt install compton
+sudo apt install guake
+sudo apt install redshift-gtk
+sudo apt install feh
+sudo apt install yad
+sudo apt install python3-pip
 sudo pip3 install -y autorandr
 
 # manually:
@@ -22,5 +15,5 @@ sudo pip3 install -y autorandr
 # https://github.com/polybar/polybar
 
 # applications
-install gimp
-install firefox
+sudo install gimp
+sudo install firefox
