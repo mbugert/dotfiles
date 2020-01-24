@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# see https://konradstrack.ninja/blog/changing-screen-brightness-in-accordance-with-human-perception/
+# Source: https://konradstrack.ninja/blog/changing-screen-brightness-in-accordance-with-human-perception/
 
 from math import log10
 
