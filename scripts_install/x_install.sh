@@ -7,13 +7,15 @@ sudo apt install guake
 sudo apt install redshift-gtk
 sudo apt install feh
 sudo apt install yad
+
 sudo apt install python3-pip
 sudo pip3 install -y autorandr
+
+# applications
+sudo apt install gimp
+sudo apt install firefox
 
 # manually:
 # https://github.com/yvbbrjdr/i3lock-fancy-rapid
 # https://github.com/polybar/polybar
-
-# applications
-sudo install gimp
-sudo install firefox
+# https://github.com/VSCodium/vscodium
