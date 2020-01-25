@@ -9,7 +9,7 @@ sudo apt install feh
 sudo apt install yad
 
 sudo apt install python3-pip
-sudo pip3 install -y autorandr
+yes | sudo pip3 install autorandr
 
 # applications
 sudo apt install gimp
