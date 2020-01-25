@@ -6,4 +6,5 @@ stow gtk-3
 stow i3
 stow polybar
 stow redshift
+stow scripts
 stow vscodium
