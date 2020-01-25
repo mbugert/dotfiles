@@ -47,7 +47,7 @@ border-size = 0
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 1
@@ -121,7 +121,7 @@ label-connected = %essid%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = "%{A1:nmtui:} %ifname% disconnected%{A}"
+label-disconnected = " %ifname% disconnected"
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
@@ -258,7 +258,8 @@ animation-charging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+base-temperature = 35
+warn-temperature = 65
 
 format = <ramp> <label>
 format-underline = #f50a4d
