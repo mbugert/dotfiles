@@ -8,3 +8,4 @@ stow polybar
 stow redshift
 stow scripts
 stow vscodium
+stow xfce4
