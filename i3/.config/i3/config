@@ -155,6 +155,12 @@ bindsym $mod+e exec thunar
 # Screenshots (full screen and window)
 bindsym Print exec xfce4-screenshooter -f
 bindsym $mod+Print exec xfce4-screenshooter -w
+
+# Move floating windows to scratchpad
+bindsym $mod+m [floating] move scratchpad
+
+# Cycle through scratchpad windows
+bindsym $mod+Shift+m scratchpad show
 ################################################################################
 
 
@@ -209,17 +215,23 @@ for_window [title="^Steam Keyboard$"] floating enable
 for_window [title="^Volume Control"] floating enable
 for_window [title="^YAD Calendar"] floating enable
 
+# keepass should be floating and as small as possible
+for_window [class="Keepassx"] floating enable
+for_window [class="Keepassx"] resize set 50 50
+
 # Title bar icons
 # Adapted from https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6
 for_window [class="(?i)firefox"] title_format "<tt></tt><span foreground='#FF6611'>  </span><tt> </tt>%title"
 for_window [class="(.*)terminal(.*)"] title_format "<tt></tt><span foreground='#00FF00' background='#000000'>  </span><tt> </tt>%title"
-for_window [class="VirtualBox Machine"] title_format "<tt></tt><span  background='#073624' foreground='#AAAAFF' >  </span><tt> </tt>%title"
-for_window [class="VirtualBox Manager"] title_format "<tt></tt><span  background='#073642' foreground='#AAAAFF' >  </span><tt> </tt>%title"
-for_window [class="libreoffice-writer"] title_format "<tt></tt><span  background='#073642' foreground='#adc5e7' >  </span><tt> </tt>%title"
-for_window [class="libreoffice-calc"] title_format "<tt></tt><span  background='#073642' foreground='#add58a' >  </span><tt> </tt>%title"
-for_window [class="libreoffice-impress"] title_format "<tt></tt><span  background='#073642' foreground='#d07e7e' >  </span><tt> </tt>%title"
-for_window [class="VSCodium"] title_format "<tt></tt><span  foreground='#b138cf' >  </span><tt> </tt>%title"
-for_window [class="Thunar"] title_format "<tt></tt><span  foreground='#84ca3c' >  </span><tt> </tt>%title"
-for_window [class="(?i)GIMP"] title_format "<tt></tt><span  foreground='#dfc900' >  </span><tt> </tt>%title"
-for_window [class="(?i)Krita"] title_format "<tt></tt><span  foreground='#3e45ff' >  </span><tt> </tt>%title"
+for_window [class="VirtualBox Machine"] title_format "<tt></tt><span background='#073624' foreground='#AAAAFF'>  </span><tt> </tt>%title"
+for_window [class="VirtualBox Manager"] title_format "<tt></tt><span background='#073642' foreground='#AAAAFF'>  </span><tt> </tt>%title"
+for_window [class="libreoffice-writer"] title_format "<tt></tt><span background='#073642' foreground='#adc5e7'>  </span><tt> </tt>%title"
+for_window [class="libreoffice-calc"] title_format "<tt></tt><span background='#073642' foreground='#add58a'>  </span><tt> </tt>%title"
+for_window [class="libreoffice-impress"] title_format "<tt></tt><span background='#073642' foreground='#d07e7e'>  </span><tt> </tt>%title"
+for_window [class="VSCodium"] title_format "<tt></tt><span foreground='#b138cf'>  </span><tt> </tt>%title"
+for_window [class="Thunar"] title_format "<tt></tt><span foreground='#84ca3c'>  </span><tt> </tt>%title"
+for_window [class="(?i)GIMP"] title_format "<tt></tt><span foreground='#dfc900'>  </span><tt> </tt>%title"
+for_window [class="(?i)Krita"] title_format "<tt></tt><span foreground='#3e45ff'>  </span><tt> </tt>%title"
+for_window [class="(?i)Riot"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
+for_window [class="Keepassx"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 ################################################################################
