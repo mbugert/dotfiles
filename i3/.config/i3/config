@@ -216,8 +216,8 @@ for_window [title="^Volume Control"] floating enable
 for_window [title="^YAD Calendar"] floating enable
 
 # keepass should be floating and as small as possible
-for_window [class="Keepassx"] floating enable
-for_window [class="Keepassx"] resize set 50 50
+for_window [class="(?i)keepassxc?"] floating enable
+for_window [class="(?i)keepassxc?"] resize set 50 50
 
 # Title bar icons
 # Adapted from https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6
@@ -233,5 +233,5 @@ for_window [class="Thunar"] title_format "<tt></tt><span foreground='#84ca3c'> �
 for_window [class="(?i)GIMP"] title_format "<tt></tt><span foreground='#dfc900'>  </span><tt> </tt>%title"
 for_window [class="(?i)Krita"] title_format "<tt></tt><span foreground='#3e45ff'>  </span><tt> </tt>%title"
 for_window [class="(?i)Riot"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
-for_window [class="Keepassx"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
+for_window [class="(?i)keepassxc?"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 ################################################################################
