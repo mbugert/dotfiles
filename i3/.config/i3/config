@@ -44,7 +44,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (tabbed, toggle split)
 #bindsym $mod+s layout stacking                 # I never liked the stacking layout anyway
@@ -151,6 +151,9 @@ bindsym $mod+Shift+Tab focus left
 
 # Super+E launches thunar
 bindsym $mod+e exec thunar
+
+# Super+F launches firefox
+bindsym $mod+f exec firefox
 
 # Screenshots (full screen and window)
 bindsym Print exec xfce4-screenshooter -f
