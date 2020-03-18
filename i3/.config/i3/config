@@ -2,6 +2,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# Map menu key to mod3, in case we need an alternative for remote i3 sessions
+exec --no-startup-id xmodmap -e 'keycode 135 = Hyper_R'
+exec --no-startup-id xmodmap -e 'add mod3 = Hyper_R'
+
 set $mod Mod4
 
 font pango:Overpass Heavy, Font Awesome 8

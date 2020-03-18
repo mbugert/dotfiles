@@ -228,8 +228,8 @@ format-charging-underline = #ffb52a
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix = " "
+;format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
@@ -246,14 +246,6 @@ animation-charging-3 = 
 animation-charging-4 = 
 ;animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
-
-;animation-discharging-0 = 
-;animation-discharging-1 = 
-;animation-discharging-2 = 
-;animation-discharging-3 = 
-;animation-discharging-4 = 
-;animation-discharging-foreground = ${colors.foreground-alt}
-;animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
