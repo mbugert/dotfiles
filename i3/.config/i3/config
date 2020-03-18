@@ -175,6 +175,11 @@ bindsym $mod+Shift+m scratchpad show
 # Use polybar in favor of i3bar
 exec_always --no-startup-id $HOME/.config/scripts/launch_polybar.sh
 
+# backup bar for remote sessions
+# bar {
+#        status_command i3status
+# }
+
 # Pleasant working when it's late
 exec --no-startup-id redshift-gtk
 
