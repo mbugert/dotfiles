@@ -2,4 +2,5 @@
     "workbench.colorTheme": "Visual Studio Light",
     "workbench.tree.indent": 25,
     "workbench.startupEditor": "welcomePage"
+    "editor.renderWhitespace": "all"
 }
