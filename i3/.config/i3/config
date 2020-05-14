@@ -206,7 +206,7 @@ bindsym XF86MonBrightnessDown exec $HOME/.config/scripts/screen_brightness.py -d
 
 # Auto-adapt screen layout
 bindsym XF86Display exec --no-startup-id $HOME/.config/scripts/update_screens.sh
-bindsym $mod+XF86Display exec --no-startup-id arandr
+bindsym Shift+XF86Display exec --no-startup-id arandr
 ################################################################################
 
 

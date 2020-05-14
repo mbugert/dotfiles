@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 autorandr --change --default mobile
-./launch_polybar.sh
+$HOME/.config/scripts/launch_polybar.sh
