@@ -2,6 +2,7 @@ sudo apt update
 
 # basic stuff
 sudo apt install i3-wm
+sudo apt install j4-dmenu-desktop
 sudo apt install compton
 sudo apt install guake
 sudo apt install redshift-gtk

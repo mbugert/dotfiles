@@ -21,7 +21,8 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
-bindsym $mod+Shift+d exec --no-startup-id rofi -show window
+# program launcher for desktop apps
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i'
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -199,6 +200,7 @@ exec --no-startup-id feh --bg-fill ~/Pictures/Wallpaper/wp.jpg
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id thinkpad-mutemic
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec $HOME/.config/scripts/screen_brightness.py -inc
@@ -207,6 +209,9 @@ bindsym XF86MonBrightnessDown exec $HOME/.config/scripts/screen_brightness.py -d
 # Auto-adapt screen layout
 bindsym XF86Display exec --no-startup-id $HOME/.config/scripts/update_screens.sh
 bindsym Shift+XF86Display exec --no-startup-id arandr
+
+# Rotate screen with rotate screen button
+bindsym XF86RotateWindows exec --no-startup-id thinkpad-rotate
 ################################################################################
 
 
