@@ -54,11 +54,12 @@ module-margin-right = 1
 
 font-0 = Overpass Mono:fontformat=opentype:size=9:weight=light
 font-1 = Overpass:fontformat=opentype:size=9:weight=heavy
-font-2 = FontAwesome5Free:style=Solid:size=10;2
+font-2 = FontAwesome5Free:style=Solid:size=10;1
 
+; not used: polypomo
 modules-left = i3
 modules-center = 
-modules-right = polypomo pulseaudio wlan eth temperature battery date powermenu
+modules-right = pulseaudio wlan eth temperature backlight battery date powermenu
 
 tray-position = center
 tray-padding = 2
@@ -159,6 +160,12 @@ format-padding  = 1
 format-underline = #0a6cf5
 
 label = "%{A1:$HOME/.config/scripts/show_calendar.sh:}%date% %time%%{A}"
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+label = " %percentage%%"
+label-underline = #e6672b
 
 [module/pulseaudio]
 type = internal/pulseaudio
