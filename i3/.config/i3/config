@@ -230,15 +230,16 @@ for_window [title="^Steam Keyboard$"] floating enable
 
 # floating modifier for applets started via polybar
 for_window [title="^Volume Control"] floating enable
-for_window [title="^YAD Calendar"] floating enable
+for_window [class="Yad" title="yad-calendar"] floating enable
 
-# keepass should be floating and as small as possible
+# keepass should be floating and small
 for_window [class="(?i)keepassxc?"] floating enable
-for_window [class="(?i)keepassxc?"] resize set 50 50
+for_window [class="(?i)keepassxc?"] resize set 400 350
 
 # Title bar icons
 # Adapted from https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6
 for_window [class="(?i)firefox"] title_format "<tt></tt><span foreground='#FF6611'>  </span><tt> </tt>%title"
+for_window [class="(?i)thunderbird"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="(.*)terminal(.*)"] title_format "<tt></tt><span foreground='#00FF00' background='#000000'>  </span><tt> </tt>%title"
 for_window [class="VirtualBox Machine"] title_format "<tt></tt><span background='#073624' foreground='#AAAAFF'>  </span><tt> </tt>%title"
 for_window [class="VirtualBox Manager"] title_format "<tt></tt><span background='#073642' foreground='#AAAAFF'>  </span><tt> </tt>%title"
@@ -249,6 +250,7 @@ for_window [class="VSCodium"] title_format "<tt></tt><span foreground='#b138cf'>
 for_window [class="Thunar"] title_format "<tt></tt><span foreground='#84ca3c'>  </span><tt> </tt>%title"
 for_window [class="(?i)GIMP"] title_format "<tt></tt><span foreground='#dfc900'>  </span><tt> </tt>%title"
 for_window [class="(?i)Krita"] title_format "<tt></tt><span foreground='#3e45ff'>  </span><tt> </tt>%title"
-for_window [class="(?i)Riot"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
+for_window [class="(?i)(Element|Telegram)"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="(?i)keepassxc?"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
+for_window [class="jetbrains-pycharm"] title_format "<tt></tt><span foreground='#2bee13'>  </span><tt> </tt>PyCharm: %title"
 ################################################################################
