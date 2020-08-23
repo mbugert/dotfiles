@@ -159,7 +159,7 @@ format-prefix = 
 format-padding  = 1
 format-underline = #0a6cf5
 
-label = "%{A1:$HOME/.config/scripts/show_calendar.sh:}%date% %time%%{A}"
+label = "%{A1:$HOME/.config/scripts/show_calendar.sh --popup:}%date% %time%%{A}"
 
 [module/backlight]
 type = internal/backlight
