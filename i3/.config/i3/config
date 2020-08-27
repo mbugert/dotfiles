@@ -30,11 +30,11 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+# move focused window - never used that
+#bindsym $mod+Shift+j move left
+#bindsym $mod+Shift+k move down
+#bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+odiaeresis move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -136,8 +136,19 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
+
+# Switch keyboard layouts - source https://www.reddit.com/r/i3wm/comments/51qvi3/switch_keyboard_layouts_with_i3/d7el0c6/
+set $keyboard_layout Keyboard Layout: (F1) QWERTZ, (F2) Neo2
+mode "$keyboard_layout" {
+        bindsym F1 exec --no-startup-id setxkbmap de -variant nodeadkeys,mode "default"
+        bindsym F2 exec --no-startup-id setxkbmap de -variant neo,mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Shift+Escape mode "$keyboard_layout"
 
 # Use tabbed layout by default
 workspace_layout tabbed
@@ -154,11 +165,10 @@ bindsym $mod+l exec --no-startup-id i3lock-fancy-rapid 11 3
 bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus left
 
-# Super+E launches thunar
+# Quick launches
 bindsym $mod+e exec thunar
-
-# Super+F launches firefox
 bindsym $mod+f exec firefox
+bindsym $mod+c exec codium
 
 # Screenshots (full screen and window)
 bindsym Print exec xfce4-screenshooter -f

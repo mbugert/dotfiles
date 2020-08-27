@@ -59,7 +59,7 @@ font-2 = FontAwesome5Free:style=Solid:size=10;1
 ; not used: polypomo
 modules-left = i3
 modules-center = 
-modules-right = pulseaudio wlan eth temperature backlight battery date powermenu
+modules-right = pulseaudio xkeyboard wlan eth temperature backlight battery date powermenu
 
 tray-position = center
 tray-padding = 2
@@ -319,6 +319,13 @@ click-right = /opt/polypomo/polypomo end
 click-middle = /opt/polypomo/polypomo lock
 scroll-up = /opt/polypomo/polypomo time +60
 scroll-down = /opt/polypomo/polypomo time -60
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+format = <label-layout>
+format-underline = #c8e3e2
+label-layout = "%{A1:xfce4-keyboard-settings:} %name%%{A}"
 
 [settings]
 screenchange-reload = true
