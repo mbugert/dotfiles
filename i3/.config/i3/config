@@ -23,6 +23,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show run
 # program launcher for desktop apps
 bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i'
+# show open windows
+bindsym $mod+Shift+w exec --no-startup-id rofi -show window
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -202,6 +204,9 @@ exec --no-startup-id guake
 
 # Random wallpaper
 exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Wallpapers/*
+
+# Synology Drive client
+exec --no-startup-id synology-drive
 ################################################################################
 
 
