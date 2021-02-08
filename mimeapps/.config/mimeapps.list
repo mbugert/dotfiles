@@ -1,0 +1,11 @@
+[Added Associations]
+application/xml=codium.desktop;
+application/x-shellscript=codium.desktop;
+text/plain=codium.desktop;
+text/csv=codium.desktop;
+text/html=codium.desktop;
+
+[Default Applications]
+text/plain=codium.desktop
+text/csv=codium.desktop
+application/x-shellscript=codium.desktop
