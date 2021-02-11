@@ -3,7 +3,6 @@ sudo apt update
 # basic stuff
 sudo apt install i3-wm
 sudo apt install j4-dmenu-desktop
-sudo apt install compton
 sudo apt install guake
 sudo apt install redshift-gtk
 sudo apt install feh
@@ -22,3 +21,4 @@ sudo apt install firefox
 # https://github.com/yvbbrjdr/i3lock-fancy-rapid
 # https://github.com/polybar/polybar
 # https://github.com/VSCodium/vscodium
+# https://github.com/yshui/picom
