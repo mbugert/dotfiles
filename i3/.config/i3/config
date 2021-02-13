@@ -2,10 +2,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# Map menu key to mod3, in case we need an alternative for remote i3 sessions
-exec --no-startup-id xmodmap -e 'keycode 135 = Hyper_R'
-exec --no-startup-id xmodmap -e 'add mod3 = Hyper_R'
+# set correct custom keyboard layout on startup
+exec --no-startup-id setxkbmap mb -variant basic
 
+# Or Mod3, in case we need an alternative for remote i3 sessions
 set $mod Mod4
 
 font pango:Overpass Heavy, Font Awesome 8
@@ -140,11 +140,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Switch keyboard layouts - source https://www.reddit.com/r/i3wm/comments/51qvi3/switch_keyboard_layouts_with_i3/d7el0c6/
+# Switch keyboard layouts
 set $keyboard_layout Keyboard Layout: (F1) QWERTZ, (F2) Neo2
 mode "$keyboard_layout" {
-        bindsym F1 exec --no-startup-id setxkbmap de -variant nodeadkeys,mode "default"
-        bindsym F2 exec --no-startup-id setxkbmap de -variant neo,mode "default"
+        bindsym F1 exec --no-startup-id setxkbmap mb -variant basic, mode "default"
+        bindsym F2 exec --no-startup-id setxkbmap mb -variant neo, mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -249,7 +249,6 @@ for_window [class="(?i)keepassxc?"] floating enable
 for_window [class="(?i)keepassxc?"] resize set 400 350
 
 # Title bar icons
-# Adapted from https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6
 for_window [class="(?i)firefox"] title_format "<tt></tt><span foreground='#FF6611'>  </span><tt> </tt>%title"
 for_window [class="(?i)thunderbird"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="(.*)terminal(.*)"] title_format "<tt></tt><span foreground='#00FF00' background='#000000'>  </span><tt> </tt>%title"

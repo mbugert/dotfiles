@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # overpass font: https://github.com/RedHatBrand/Overpass
 wget https://github.com/RedHatBrand/Overpass/releases/download/3.0.2/overpass-desktop-fonts.zip
 unzip -qq overpass-desktop-fonts.zip

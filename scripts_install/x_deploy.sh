@@ -1,11 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 # call me from root of dotfiles repository
-stow autorandr
-stow compton
-stow gtk-3
-stow i3
-stow polybar
-stow redshift
-stow scripts
-stow vscodium
-stow xfce4
+stow --target=$HOME autorandr gtk-3 i3 mimeapps picom polybar redshift scripts vscodium xfce4
+sudo stow --target=/ X11

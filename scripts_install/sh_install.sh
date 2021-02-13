@@ -1,8 +1,6 @@
+#!/usr/bin/env bash
+
 sudo apt update
 
 # basic necessities to make this whole thing work
-sudo apt install stow
-sudo apt install htop
-sudo apt install iftop
-sudo apt install git
-sudo apt install ncdu
+sudo apt install stow htop iftop git ncdu
