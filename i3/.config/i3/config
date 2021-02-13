@@ -25,7 +25,7 @@ bindsym $mod+d exec --no-startup-id rofi -show run -theme Arc-Dark
 bindsym $mod+Shift+d exec --no-startup-id rofi -modi drun -show drun -show-icons -theme Arc-Dark
 
 # show open windows
-bindsym $mod+Shift+w exec --no-startup-id rofi -show window
+bindsym $mod+Shift+w exec --no-startup-id rofi -show window -show-icons -theme Arc-Dark
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
