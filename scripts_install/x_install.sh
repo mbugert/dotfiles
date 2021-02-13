@@ -3,7 +3,7 @@
 sudo apt update
 
 # basic stuff
-sudo apt install arandr feh guake i3-wm j4-dmenu-desktop redshift-gtk rofi yad
+sudo apt install arandr feh guake i3-wm redshift-gtk rofi yad
 
 sudo apt install python3-pip
 yes | sudo pip3 install autorandr
