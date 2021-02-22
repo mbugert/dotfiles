@@ -1,26 +1,32 @@
 # dotfiles
 My stuff. Notable parts:
-* [i3wm](https://i3wm.org/)
-    * primarily using the tabbed layout
-    * title bar icons for common apps - [inspiration from here](https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6)
-    * [i3lock-fancy-rapid](https://github.com/yvbbrjdr/i3lock-fancy-rapid)
-    * hassle-free keyboard layout switching using i3 modes, triggered via `$mod+Shift+Escape` - [inspiration from here](https://www.reddit.com/r/i3wm/comments/51qvi3/switch_keyboard_layouts_with_i3/d7el0c6/)
-* [polybar](https://github.com/polybar/polybar)
-* [feh](https://feh.finalrewind.org/)
-* [picom](https://github.com/yshui/picom)
-* [redshift](https://github.com/jonls/redshift)
-* exponential screen brightness (for greater control over the low brightness region) using a script by [Konrad Strack](https://konradstrack.ninja/blog/changing-screen-brightness-in-accordance-with-human-perception/)
+* GUI:
+    * [i3wm](https://i3wm.org/)
+        * primarily using the tabbed layout
+        * title bar icons for common apps - [inspiration from here](https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6)
+        * [i3lock-fancy-rapid](https://github.com/yvbbrjdr/i3lock-fancy-rapid)
+        * hassle-free keyboard layout switching using i3 modes, triggered via `$mod+Shift+Escape` - [inspiration from here](https://www.reddit.com/r/i3wm/comments/51qvi3/switch_keyboard_layouts_with_i3/d7el0c6/)
+    * [polybar](https://github.com/polybar/polybar)
+    * [feh](https://feh.finalrewind.org/)
+    * [picom](https://github.com/yshui/picom)
+    * [redshift](https://github.com/jonls/redshift)
+    * exponential screen brightness (for greater control over the low brightness region) using a script by [Konrad Strack](https://konradstrack.ninja/blog/changing-screen-brightness-in-accordance-with-human-perception/)
+* CLI:
+    * `zsh` with
+        * [powerlevel10k](https://github.com/romkatv/powerlevel10k), lean style
+        * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
 ## Setup
 To be installed on top of XFCE on Debian/Ubuntu.
 ```
 git clone https://github.com/mbugert/dotfiles
-cd dotfiles
-./scripts_install/sh_install.sh
-./scripts_install/x_install.sh
-# manually install extra applications mentioned in ./scripts_install/x_install.sh
-./scripts_install/fonts_install.sh
-./scripts_install/x_deploy.sh
+cd dotfiles/scripts_install
+./sh_install.sh
+./sh_deploy.sh
+./x_install.sh
+# manually install extra applications mentioned in ./x_install.sh
+./fonts_install.sh
+./x_deploy.sh
 ```
 
 Explanation how `stow` works for managing dotfiles: http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
