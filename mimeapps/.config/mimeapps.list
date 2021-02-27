@@ -1,11 +1,21 @@
 [Added Associations]
 application/xml=codium.desktop;
 application/x-shellscript=codium.desktop;
-text/plain=codium.desktop;
+text/plain=codium.desktop
 text/csv=codium.desktop;
 text/html=codium.desktop;
+text/markdown=codium.desktop;
+application/x-desktop=codium.desktop;
+image/jpeg=ristretto.desktop;
+application/pdf=atril.desktop;xournal.desktop
+application/x-wine-extension-ini=codium.desktop;
+image/png=ristretto.desktop;gimp.desktop
+video/mp4=vlc.desktop;
 
 [Default Applications]
 text/plain=codium.desktop
 text/csv=codium.desktop
 application/x-shellscript=codium.desktop
+image/jpeg=ristretto.desktop
+application/pdf=atril.desktop
+image/png=ristretto.desktop
