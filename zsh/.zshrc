@@ -78,6 +78,9 @@ source "${ZSH_DIR}/powerlevel10k/powerlevel10k.zsh-theme"
 # zsh-autosuggestions
 source "${ZSH_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
+# zsh-bd
+source "${ZSH_DIR}/zsh-bd/bd.zsh"
+
 # fzf key bindings and auto-completion (see 'apt-cache show fzf' which points to /usr/share/doc/fzf/README.Debian)
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh

@@ -19,3 +19,9 @@ if [[ ! -d "${ZSH_DIR}/zsh-autosuggestions" ]]; then
 else
     echo "Cloned zsh-autosuggestions repository already exists at ${ZSH_DIR}, skipping..."
 fi
+
+if [[ ! -d "${ZSH_DIR}/zsh-bd" ]]; then
+    git clone --depth 1 https://github.com/Tarrasch/zsh-bd "${ZSH_DIR}/zsh-bd"
+else
+    echo "Cloned zsh-bd repository already exists at ${ZSH_DIR}, skipping..."
+fi
