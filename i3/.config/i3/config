@@ -263,4 +263,6 @@ for_window [class="(?i)Krita"] title_format "<tt></tt><span foreground='#3e45ff'
 for_window [class="(?i)(Element|Telegram)"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="(?i)keepassxc?"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="jetbrains-pycharm"] title_format "<tt></tt><span foreground='#2bee13'>  </span><tt> </tt>PyCharm: %title"
+for_window [class="(?i)jabref"] title_format "<tt></tt><span foreground='#b7a6f2'>  </span><tt> </tt>JabRef: %title"
+for_window [class="(?i)texstudio"] title_format "<tt></tt><span foreground='#aaaaaa'>  </span><tt> </tt>TeXstudio: %title"
 ################################################################################
