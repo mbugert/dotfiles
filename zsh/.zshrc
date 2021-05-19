@@ -1,12 +1,20 @@
 #------ things from the config wizard ------
-HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
 setopt autocd
 unsetopt beep
 bindkey -e
 autoload -Uz compinit
 compinit
+
+#------ history settings ------
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+# enable timestamps for history
+setopt EXTENDED_HISTORY
+# immediately write commands to history (not only when shell exits)
+setopt INC_APPEND_HISTORY
+# hide duplicates in Ctrl+R
+setopt HIST_FIND_NO_DUPS
 
 #------ general keybindings (Home, End, ...) ------
 # taken from https://wiki.archlinux.org/index.php/zsh#Key_bindings
@@ -92,10 +100,9 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 
 # add ~/.local/bin to PATH for some scripts from my dotfiles
 path+=('/home/$HOME/.local/bin')
-export PATH
 
 # enable tab-completion for dotfiles
-setopt globdots
+setopt GLOBDOTS
 
 # xterm title, see https://wiki.archlinux.org/index.php/zsh#xterm_title
 autoload -Uz add-zsh-hook
@@ -111,3 +118,13 @@ if [[ "$TERM" == (alacritty*|gnome*|konsole*|putty*|rxvt*|screen*|tmux*|xterm*) 
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
+
+#------ pyenv setup ------
+export PYENV_ROOT="$HOME/.local/bin/pyenv"
+path+=("$PYENV_ROOT/bin")
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# set PATH after all changes from above
+export PATH
