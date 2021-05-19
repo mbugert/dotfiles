@@ -3,7 +3,7 @@
 sudo apt update
 
 # basic necessities to make this whole thing work
-sudo apt install stow fzf git htop iftop ncdu ripgrep zsh
+sudo apt install stow fzf git htop iftop ncdu ripgrep todotxt-cli zsh
 
 # clone zsh plugins
 readonly ZSH_DIR=~/.config/zsh/

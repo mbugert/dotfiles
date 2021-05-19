@@ -126,5 +126,17 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# set PATH after all changes from above
+# write PATH env var after all changes from above
 export PATH
+
+#------ aliases ------
+alias t="todo-txt -t -d $HOME/.config/todotxt/todo.cfg"
+alias tw="todo-txt -t -d $HOME/.config/todotxt/todo_work.cfg"
+
+alias gs="git status"
+alias ga="git add"
+alias gl="git log"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gp="git push"
+alias grh="git reset --hard"
