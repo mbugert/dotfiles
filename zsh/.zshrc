@@ -130,9 +130,34 @@ fi
 export PATH
 
 #------ aliases ------
-alias t="todo-txt -t -d $HOME/.config/todotxt/todo.cfg"
-alias tw="todo-txt -t -d $HOME/.config/todotxt/todo_work.cfg"
 
+# todotxt, see https://github.com/todotxt/todo.txt-cli/issues/256#issuecomment-844214838
+# Without this, zsh would expand the t and tt aliases too early, causing
+# it to use the vanilla _todo.sh completion function which reads the
+# todotxt config from the default location, i.e. not what we want.
+# zsh documentation: http://zsh.sourceforge.net/Doc/Release/Options.html
+setopt COMPLETE_ALIASES
+alias t="todo-txt -t -d $HOME/.config/todotxt/todo.cfg"
+_t()
+{
+    alias todo.sh='todo-txt -d $HOME/.config/todotxt/todo.cfg'
+    # This is needed to make aliases work in a non-interactive shell,
+    # see https://stackoverflow.com/questions/23258413/expand-aliases-in-non-interactive-shells
+    setopt ALIASES
+    _todo.sh "$@"
+}
+compdef _t t
+
+alias tw="todo-txt -t -d $HOME/.config/todotxt/todo_work.cfg"
+_tw()
+{
+    alias todo.sh='todo-txt -d $HOME/.config/todotxt/todo_work.cfg'
+    setopt ALIASES
+    _todo.sh "$@"
+}
+compdef _tw tw
+
+# git aliases
 alias gs="git status"
 alias ga="git add"
 alias gl="git log"
