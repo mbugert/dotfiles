@@ -16,3 +16,4 @@ sudo apt install gimp firefox keepassx
 # https://github.com/polybar/polybar
 # https://github.com/VSCodium/vscodium
 # https://github.com/yshui/picom
+# https://github.com/martin-ueding/thinkpad-scripts/
