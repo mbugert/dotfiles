@@ -1,53 +1,59 @@
 #!/usr/bin/env python3
 # Source: https://konradstrack.ninja/blog/changing-screen-brightness-in-accordance-with-human-perception/
+# With modifications to use ACPI instead of xbacklight.
 
 from math import log10
+from pathlib import Path
 
 import sys
 import subprocess
 
 
-def get_backlight():
-    return float(subprocess.check_output(["xbacklight",  "-get"]))
+# needs trial & error to determine, like this:
+# `echo 30 > /sys/class/backlight/intel_backlight/brightness`
+min_brightness = 30
 
-def set_backlight(backlight):
-    subprocess.call(["xbacklight", "-set", str(backlight)])
+steps = 20
+backlight_location = Path("/sys/class/backlight/intel_backlight")
 
-def backlight_to_step(backlight, backlight_min, backlight_max, steps):
-    x_min = log10(backlight_min)
-    x_max = log10(backlight_max)
-    return round(log10(backlight) / (x_max - x_min) * steps)
 
-def step_to_backlight(step, backlight_min, backlight_max, steps):
-    x_min = log10(backlight_min)
-    x_max = log10(backlight_max)
-    x = step / steps * (x_max - x_min)
+def get_brightness():
+    return int(subprocess.check_output(["cat",  backlight_location / "actual_brightness"]))
 
-    backlight = round(max(min(10 ** x, backlight_max), backlight_min))
-    return backlight
+
+def get_max_brightness():
+    return int(subprocess.check_output(["cat",  backlight_location / "max_brightness"]))
+
+
+def set_brightness(backlight):
+    with (backlight_location / "brightness").open("w") as f:
+        subprocess.call(["echo", str(backlight)], stdout=f)
 
 
 if __name__ == "__main__":
 
-    backlight_min = 1
-    backlight_max = 100
-
-    steps = 20
-
     if len(sys.argv) < 2 or sys.argv[1] not in ["-inc", "-dec"]:
         print("usage:\n\t{0} -inc / -dec".format(sys.argv[0]))
         sys.exit(0)
-
-    current_backlight = get_backlight()
-    current_step = backlight_to_step(current_backlight, backlight_min, backlight_max, steps)
-
     action = sys.argv[1]
+
+    curr_brightness = get_brightness()
+    max_brightness = get_max_brightness()
+
+    log_min_brightness = log10(min_brightness)
+    log_max_brightness = log10(max_brightness)
+
+    # get current step from current backlight brightness
+    current_step = round(log10(curr_brightness) / (log_max_brightness - log_min_brightness) * steps)
+    
     if action == "-inc":
         new_step = current_step + 1
     elif action == "-dec":
         new_step = current_step - 1
 
-    new_backlight = step_to_backlight(new_step, backlight_min, backlight_max, steps)
+    # compute new backlight brightness from new step
+    log_new_brightness = new_step / steps * (log_max_brightness - log_min_brightness)
+    new_brightness = max(min(round(10 ** log_new_brightness), max_brightness), min_brightness)
 
-    print("Current backlight: {0}\nChanging to: {1}".format(current_backlight, new_backlight))
-    set_backlight(new_backlight)
+    print("Current brightness: {0}\nChanging to: {1}".format(curr_brightness, new_brightness))
+    set_brightness(new_brightness)
