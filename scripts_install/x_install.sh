@@ -11,6 +11,10 @@ yes | sudo pip3 install autorandr
 # applications
 sudo apt install gimp firefox keepassx
 
+# For setting display brightness via ACPI, one needs write permissions to /sys after every boot. One solution is udev, see https://wiki.archlinux.org/title/Backlight#Udev_rule
+sudo sh -c 'echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", GROUP=\"video\", MODE=\"0664\"" > /etc/udev/rules.d/60-backlight.rules'
+sudo usermod -a -G video $USER
+
 # manually:
 # https://github.com/yvbbrjdr/i3lock-fancy-rapid
 # https://github.com/polybar/polybar
