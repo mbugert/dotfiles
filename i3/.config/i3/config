@@ -250,6 +250,7 @@ for_window [class="(?i)keepassxc?"] resize set 400 350
 
 # Title bar icons
 for_window [class="(?i)firefox"] title_format "<tt></tt><span foreground='#FF6611'>  </span><tt> </tt>%title"
+for_window [class="(?i)google-chrome"] title_format "<tt></tt><span foreground='#FFFFFF'>  </span><tt> </tt>%title"
 for_window [class="(?i)thunderbird"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="(.*)terminal(.*)"] title_format "<tt></tt><span foreground='#00FF00' background='#000000'>  </span><tt> </tt>%title"
 for_window [class="VirtualBox Machine"] title_format "<tt></tt><span background='#073624' foreground='#AAAAFF'>  </span><tt> </tt>%title"
@@ -259,11 +260,16 @@ for_window [class="libreoffice-calc"] title_format "<tt></tt><span background='#
 for_window [class="libreoffice-impress"] title_format "<tt></tt><span background='#073642' foreground='#d07e7e'>  </span><tt> </tt>%title"
 for_window [class="VSCodium"] title_format "<tt></tt><span foreground='#b138cf'>  </span><tt> </tt>%title"
 for_window [class="Thunar"] title_format "<tt></tt><span foreground='#84ca3c'>  </span><tt> </tt>%title"
+for_window [class="dolphin"] title_format "<tt></tt><span foreground='#84ca3c'>  </span><tt> </tt>%title"
 for_window [class="(?i)GIMP"] title_format "<tt></tt><span foreground='#dfc900'>  </span><tt> </tt>%title"
 for_window [class="(?i)Krita"] title_format "<tt></tt><span foreground='#3e45ff'>  </span><tt> </tt>%title"
+for_window [class="(?i)xournal"] title_format "<tt></tt><span foreground='#ffaad5'>  </span><tt> </tt>%title"
+for_window [class="(?i)vlc"] title_format "<tt></tt><span background='#ffffff' foreground='#fe8106'>  </span><tt> </tt>%title"
 for_window [class="(?i)(Element|Telegram)"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="(?i)keepassxc?"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="jetbrains-pycharm"] title_format "<tt></tt><span foreground='#2bee13'>  </span><tt> </tt>PyCharm: %title"
+for_window [class="(?i)meld"] title_format "<tt></tt><span foreground='#2758e2'>  </span><tt> </tt>Meld: %title"
 for_window [class="(?i)jabref"] title_format "<tt></tt><span foreground='#b7a6f2'>  </span><tt> </tt>JabRef: %title"
 for_window [class="(?i)texstudio"] title_format "<tt></tt><span foreground='#aaaaaa'>  </span><tt> </tt>TeXstudio: %title"
+for_window [class="(?i)x2goclient"] title_format "<tt></tt><span foreground='#246ed8'>  </span><tt> </tt>%title"
 ################################################################################
