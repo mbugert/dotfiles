@@ -3,33 +3,36 @@ My stuff. Notable parts:
 * GUI:
     * [i3wm](https://i3wm.org/)
         * primarily using the tabbed layout
-        * title bar icons for common apps - [inspiration from here](https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6)
+        * title bar icons for common apps
         * [i3lock-fancy-rapid](https://github.com/yvbbrjdr/i3lock-fancy-rapid)
-        * hassle-free keyboard layout switching using i3 modes, triggered via `$mod+Shift+Escape` - [inspiration from here](https://www.reddit.com/r/i3wm/comments/51qvi3/switch_keyboard_layouts_with_i3/d7el0c6/)
+        * hassle-free keyboard layout switching using i3 modes, triggered via `$mod+Shift+Escape`
     * [polybar](https://github.com/polybar/polybar)
     * [feh](https://feh.finalrewind.org/)
     * [picom](https://github.com/yshui/picom)
     * [redshift](https://github.com/jonls/redshift)
-    * exponential screen brightness (for greater control over the low brightness region) using a script by [Konrad Strack](https://konradstrack.ninja/blog/changing-screen-brightness-in-accordance-with-human-perception/)
+    * exponential screen brightness (for greater control over the low brightness region)
 * CLI:
     * `zsh` with
         * [powerlevel10k](https://github.com/romkatv/powerlevel10k), lean style
         * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
-## Setup
-To be installed on top of XFCE on Debian/Ubuntu.
+## Usage / Setup
+* Have Debian/Ubuntu or Arch/Manjaro, and xfce4 desktop environment
+* Run:
+```bash
+git clone https://github.com/mbugert/dotfiles ~/dotfiles
+cd ~/dotfiles
+./setup.sh
 ```
-git clone https://github.com/mbugert/dotfiles
-cd dotfiles/scripts_install
-./sh_install.sh
-./sh_deploy.sh
-./x_install.sh
-# manually install extra applications mentioned in ./x_install.sh
-./fonts_install.sh
-./x_deploy.sh
-```
+* Debian/Ubuntu require manual installation of several tools (polybar, picom, and more). The setup script prints more detailed instructions.
+* Wallpapers are picked randomly from `${HOME}/Pictures/Wallpapers/`
 
-Explanation how `stow` works for managing dotfiles: http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
+## Todo
+* setup:
+    * only change/check login shell if necessary
+    * install icon theme package (which?)
+    * install all xfce4 desktop utilities
+* more in-depth tests on Arch/Manjaro
 
 ## Notable tweaks
 Obscure things I need to document for myself.
@@ -46,3 +49,9 @@ To resolve this, I like to use the menu key (the one between Alt Gr and right Ct
 References:
 * Creating a custom keyboard layout: https://gist.github.com/nh2/ff15f412881f35ab7730
 * More information on `xkb` configuration (very helpful): https://www.charvolant.org/doug/xkb/html/node5.html
+
+## Inspiration
+* exponential screen brightness: [Konrad Strack](https://konradstrack.ninja/blog/changing-screen-brightness-in-accordance-with-human-perception/)
+* using i3 modes for switching keyboard layouts: [/u/grindhawk](https://www.reddit.com/r/i3wm/comments/51qvi3/switch_keyboard_layouts_with_i3/d7el0c6/)
+* title bar icons: [github.com/dmelliot](https://gist.github.com/dmelliot/437924ff581f3f1edd59f44833be6cc6)
+* for the idea of using Ansible for deployment: [github.com/elnappo](https://github.com/elnappo/dotfiles/)

@@ -1,0 +1,50 @@
+---
+- name: Install dev CLI tools from apt repositories
+  become: yes
+  package:
+    name:
+      - build-essential
+      - docker
+      - python3
+      - python3-dev
+      - python3-pip
+      - python3-venv
+      - python3-wheel
+      - python3-setuptools
+    state: present
+  when: ansible_facts['distribution'] in debian_like_distributions
+
+- name: Install dev CLI tools for Arch/Manjaro
+  block:
+    - name: Install dev CLI tools from Arch core/extra repositories
+      become: yes
+      package:
+        name:
+          - base-devel
+          - docker
+          - python
+          - python-pip
+          - python-virtualenv
+          - python-wheel
+          - python-setuptools
+        state: present
+    - name: Install dev CLI tools from AUR
+      kewlfft.aur.aur:
+          name:
+            - yay
+          use: makepkg
+          state: present
+  when: ansible_facts['distribution'] in arch_like_distributions
+
+- name: Create docker group
+  become: yes
+  group:
+    name: docker
+    state: present
+
+- name: Add {{ ansible_user_id }} to docker group
+  become: yes
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: true

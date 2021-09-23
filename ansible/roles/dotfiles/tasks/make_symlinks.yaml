@@ -1,0 +1,17 @@
+---
+# when included, this pair of tasks can symlink a file and
+# create all parent paths on the way there
+
+- name: Make sure symlink destination dirs exists
+  file:
+    path: '{{ item.dest | dirname }}'
+    state: directory
+  loop: '{{ symlinks }}'
+
+- name: Create symlinks
+  file:
+    path: '{{ item.dest }}'
+    src: '{{ role_path }}/files/{{ item.src_name }}'
+    state: link
+    force: yes
+  loop: '{{ symlinks }}'

@@ -1,0 +1,52 @@
+---
+- name: Install zsh
+  become: yes
+  package:
+    name: zsh
+    state: present
+
+# plugins
+- name: Install powerlevel10k zsh skin
+  git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    depth: 1
+    dest: '~/.config/zsh/powerlevel10k'
+    update: yes
+
+- name: Install zsh-autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    depth: 1
+    dest: '~/.config/zsh/zsh-autosuggestions'
+    update: yes
+
+- name: Install zsh-bd
+  git:
+    repo: https://github.com/Tarrasch/zsh-bd.git
+    depth: 1
+    dest: '~/.config/zsh/zsh-bd'
+    update: yes
+
+- name: Symlink zsh configuration files
+  include_tasks: make_symlinks.yaml
+  vars:
+    symlinks:
+      - { dest: '~/.zshrc', src_name: 'zsh/.zshrc' }
+      - { dest: '~/.config/zsh/powerlevel10k/p10k_mb.zsh', src_name: 'zsh/p10k_mb.zsh' }
+
+- name: Determine zsh binary location
+  shell: which zsh
+  register: which_zsh
+  changed_when: false
+
+# see https://stackoverflow.com/a/69102800
+- name: Determine current username
+  shell: whoami
+  register: whoami_output
+  changed_when: false
+
+- name: Make zsh the login shell
+  become: yes
+  user:
+    name: '{{ whoami_output.stdout }}'
+    shell: '{{ which_zsh.stdout }}'

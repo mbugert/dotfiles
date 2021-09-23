@@ -1,0 +1,275 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+# set correct custom keyboard layout on startup
+exec --no-startup-id setxkbmap mb -variant basic
+
+# Or Mod3, in case we need an alternative for remote i3 sessions
+set $mod Mod4
+
+font pango:Overpass Heavy, Font Awesome 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec xfce4-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# program launcher for desktop apps
+bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun -show-icons -theme Arc-Dark
+
+# show open windows
+bindsym $mod+Shift+w exec --no-startup-id rofi -show window -show-icons -theme Arc-Dark
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window - never used that
+#bindsym $mod+Shift+j move left
+#bindsym $mod+Shift+k move down
+#bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+odiaeresis move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+Shift+f fullscreen toggle
+
+# change container layout (tabbed, toggle split)
+#bindsym $mod+s layout stacking                 # I never liked the stacking layout anyway
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym odiaeresis resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 20 px or 20 ppt
+        bindsym Down resize grow height 20 px or 20 ppt
+        bindsym Up resize shrink height 20 px or 20 ppt
+        bindsym Right resize grow width 20 px or 20 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Switch keyboard layouts
+set $keyboard_layout Keyboard Layout: (F1) QWERTZ, (F2) Neo2
+mode "$keyboard_layout" {
+        bindsym F1 exec --no-startup-id setxkbmap mb -variant basic, mode "default"
+        bindsym F2 exec --no-startup-id setxkbmap mb -variant neo, mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Shift+Escape mode "$keyboard_layout"
+
+# Use tabbed layout by default
+workspace_layout tabbed
+
+# Save 2px on screen borders
+hide_edge_borders smart
+
+
+################################# More binds ###################################
+# Lockscreen
+bindsym $mod+l exec --no-startup-id i3lock-fancy-rapid 11 3
+
+# Tab through current windows on workspace
+bindsym $mod+Tab focus right
+bindsym $mod+Shift+Tab focus left
+
+# Quick launches
+bindsym $mod+e exec thunar
+bindsym $mod+f exec firefox
+bindsym $mod+c exec codium
+
+# Screenshots (full screen and window)
+bindsym Print exec xfce4-screenshooter -f
+bindsym $mod+Print exec xfce4-screenshooter -w
+bindsym $mod+Shift+Print exec xfce4-screenshooter -r
+
+# Move floating windows to scratchpad
+bindsym $mod+m [floating] move scratchpad
+
+# Cycle through scratchpad windows
+bindsym $mod+Shift+m scratchpad show
+################################################################################
+
+
+################################# Autostarts ###################################
+# Use polybar in favor of i3bar, and feh for wallpapers
+exec_always --no-startup-id $HOME/.config/scripts/launch_polybar_feh.sh
+
+# backup bar for remote sessions
+# bar {
+#        status_command i3status
+# }
+
+# Pleasant working when it's late
+exec --no-startup-id redshift-gtk
+
+# Bit of eyecandy
+exec --no-startup-id picom --transparent-clipping --experimental-backends
+
+# Dropdown terminal
+exec --no-startup-id guake
+
+# Synology Drive client
+exec --no-startup-id synology-drive
+################################################################################
+
+
+################################ Bind FN keys ##################################
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id thinkpad-mutemic
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec $HOME/.config/scripts/screen_brightness.py -inc
+bindsym XF86MonBrightnessDown exec $HOME/.config/scripts/screen_brightness.py -dec
+
+# Auto-adapt screen layout
+bindsym XF86Display exec --no-startup-id $HOME/.config/scripts/update_screens.sh
+bindsym Shift+XF86Display exec --no-startup-id arandr
+
+# Rotate screen with rotate screen button
+bindsym XF86RotateWindows exec --no-startup-id thinkpad-rotate
+################################################################################
+
+
+############################ Per-app adjustments ###############################
+# See https://github.com/ValveSoftware/steam-for-linux/issues/1040
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+
+# floating modifier for applets started via polybar
+for_window [title="^Volume Control"] floating enable
+for_window [class="Yad" title="yad-calendar"] floating enable
+
+# keepass should be floating and small
+for_window [class="(?i)keepassxc?"] floating enable
+for_window [class="(?i)keepassxc?"] resize set 400 350
+
+# Title bar icons
+for_window [class="(?i)firefox"] title_format "<tt></tt><span foreground='#FF6611'>  </span><tt> </tt>%title"
+for_window [class="(?i)google-chrome"] title_format "<tt></tt><span foreground='#FFFFFF'>  </span><tt> </tt>%title"
+for_window [class="(?i)thunderbird"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
+for_window [class="(.*)terminal(.*)"] title_format "<tt></tt><span foreground='#00FF00' background='#000000'>  </span><tt> </tt>%title"
+for_window [class="VirtualBox Machine"] title_format "<tt></tt><span background='#073624' foreground='#AAAAFF'>  </span><tt> </tt>%title"
+for_window [class="VirtualBox Manager"] title_format "<tt></tt><span background='#073642' foreground='#AAAAFF'>  </span><tt> </tt>%title"
+for_window [class="libreoffice-writer"] title_format "<tt></tt><span background='#073642' foreground='#adc5e7'>  </span><tt> </tt>%title"
+for_window [class="libreoffice-calc"] title_format "<tt></tt><span background='#073642' foreground='#add58a'>  </span><tt> </tt>%title"
+for_window [class="libreoffice-impress"] title_format "<tt></tt><span background='#073642' foreground='#d07e7e'>  </span><tt> </tt>%title"
+for_window [class="VSCodium"] title_format "<tt></tt><span foreground='#b138cf'>  </span><tt> </tt>%title"
+for_window [class="Thunar"] title_format "<tt></tt><span foreground='#84ca3c'>  </span><tt> </tt>%title"
+for_window [class="dolphin"] title_format "<tt></tt><span foreground='#84ca3c'>  </span><tt> </tt>%title"
+for_window [class="(?i)GIMP"] title_format "<tt></tt><span foreground='#dfc900'>  </span><tt> </tt>%title"
+for_window [class="(?i)Krita"] title_format "<tt></tt><span foreground='#3e45ff'>  </span><tt> </tt>%title"
+for_window [class="(?i)xournal"] title_format "<tt></tt><span foreground='#ffaad5'>  </span><tt> </tt>%title"
+for_window [class="(?i)vlc"] title_format "<tt></tt><span background='#ffffff' foreground='#fe8106'>  </span><tt> </tt>%title"
+for_window [class="(?i)(Element|Telegram)"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
+for_window [class="(?i)keepassxc?"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
+for_window [class="jetbrains-pycharm"] title_format "<tt></tt><span foreground='#2bee13'>  </span><tt> </tt>PyCharm: %title"
+for_window [class="(?i)meld"] title_format "<tt></tt><span foreground='#2758e2'>  </span><tt> </tt>Meld: %title"
+for_window [class="(?i)jabref"] title_format "<tt></tt><span foreground='#b7a6f2'>  </span><tt> </tt>JabRef: %title"
+for_window [class="(?i)texstudio"] title_format "<tt></tt><span foreground='#aaaaaa'>  </span><tt> </tt>TeXstudio: %title"
+for_window [class="(?i)(x2goclient|nxagent)"] title_format "<tt></tt><span foreground='#246ed8'>  </span><tt> </tt>%title"
+################################################################################

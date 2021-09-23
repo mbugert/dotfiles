@@ -1,0 +1,6 @@
+---
+- name: Set up mbugert dotfiles
+  hosts: localhost
+  connection: local
+  roles:
+    - dotfiles

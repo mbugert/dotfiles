@@ -1,0 +1,74 @@
+---
+- name: Install user CLI tools
+  become: yes
+  package:
+    name:
+      # important ones
+      - dnsutils
+      - git
+      - htop
+      - iftop
+      - iotop
+      - nano
+      - ncdu
+      - nmap
+      - sudo
+      - wget
+
+      # others
+      - cpulimit
+      - curl
+      - foremost
+      - fzf
+      - hugo
+      - iperf3
+      - neofetch
+      - pandoc
+      - pdfgrep
+      - ripgrep
+      - smartmontools
+      - smbclient
+      - sox
+      - sshfs
+      - traceroute
+      - tree
+      - unrar
+      - unzip
+      - wavemon
+    state: present
+
+- name: Install user CLI tools from apt repositories
+  become: yes
+  package:
+    name:
+      # important ones
+      - iputils-ping
+      - p7zip-full
+      - network-manager
+
+      # others
+      - cpufrequtils
+      - wireless-tools
+    state: present
+  when: ansible_facts['distribution'] in debian_like_distributions
+
+- name: Install user CLI tools from Arch core/extra repositories
+  become: yes
+  package:
+    name:
+      # important ones
+      - iputils
+      - p7zip
+      - networkmanager
+
+      # others
+      - cpupower
+      - wireless_tools
+    state: present
+  when: ansible_facts['distribution'] in arch_like_distributions
+
+- name: Install user CLI tools from pip
+  become: yes
+  pip:
+    name: youtube_dl
+    state: present

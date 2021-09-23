@@ -1,0 +1,15 @@
+---
+# see https://github.com/ansible/ansible/issues/34454#issuecomment-599156792
+- name: Check whether desktop fonts are installed
+  stat:
+    path: '{{ item }}'
+  loop:
+    - /usr/local/share/fonts/opentype/overpass
+    - /usr/local/share/fonts/opentype/overpass-mono
+    - /usr/local/share/fonts/opentype/fontawesome
+  register: files_stat
+
+- name: Install desktop fonts
+  become: yes
+  shell: '{{ role_path }}/files/fonts/install_fonts.sh'
+  when: files_stat.results | rejectattr('stat.exists') | list

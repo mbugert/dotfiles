@@ -1,0 +1,19 @@
+---
+- include_tasks: '{{ cli_item }}'
+  loop:
+    - cli_tools_dev.yaml
+    - cli_tools_user.yaml
+    - cli_zsh.yaml
+    - cli_todotxt.yaml
+  loop_control:
+    loop_var: cli_item
+  tags: cli
+
+- include_tasks: '{{ gui_item }}'
+  loop:
+    - gui_desktop.yaml
+    - gui_fonts.yaml
+    - gui_tools.yaml
+  loop_control:
+    loop_var: gui_item
+  tags: gui
