@@ -30,7 +30,7 @@
         name:
           - jabref
           - pdfsam
-          - virtualbox
+          - virtualbox-6.1
           - xournal
         state: present
     - name: Notify about manual installation for Debian/Ubuntu

@@ -32,7 +32,6 @@
       - sshfs
       - traceroute
       - tree
-      - unrar
       - unzip
       - wavemon
     state: present
@@ -44,6 +43,7 @@
       # important ones
       - iputils-ping
       - p7zip-full
+      - unrar-free
       - network-manager
 
       # others
@@ -59,6 +59,7 @@
       # important ones
       - iputils
       - p7zip
+      - unrar
       - networkmanager
 
       # others
