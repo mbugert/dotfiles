@@ -33,7 +33,6 @@
           - https://github.com/yvbbrjdr/i3lock-fancy-rapid
           - https://github.com/polybar/polybar
           - https://github.com/yshui/picom
-          - https://github.com/martin-ueding/thinkpad-scripts
   when: ansible_facts['distribution'] in debian_like_distributions
 
 - name: Install desktop tools for Arch/Manjaro
@@ -51,7 +50,6 @@
           - i3lock-fancy-rapid-git
           - picom-git
           - polybar
-          - thinkpad-scripts
         use: makepkg
         state: present
   when: ansible_facts['distribution'] in arch_like_distributions
@@ -67,7 +65,6 @@
       - { dest: '~/.config/polybar', src_name: 'polybar' }
       - { dest: '~/.config/redshift', src_name: 'redshift' }
       - { dest: '~/.config/scripts', src_name: 'scripts' }
-      - { dest: '~/.config/thinkpad-scripts/hooks/postrotate', src_name: 'thinkpad-scripts/postrotate' }
       - { dest: '~/.config/xfce4/terminal/terminalrc', src_name: 'terminal/xfce4_terminalrc' }
 
 # For setting display brightness via ACPI, one needs write permissions to /sys after every boot. One solution is udev, see https://wiki.archlinux.org/title/Backlight#Udev_rule

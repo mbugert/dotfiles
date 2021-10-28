@@ -17,3 +17,6 @@
   loop_control:
     loop_var: gui_item
   tags: gui
+
+- include_tasks: device_tablet.yaml
+  when: '"Tablet" in {{ ansible_facts["ansible_product_name"] }}'
