@@ -10,7 +10,7 @@ if [ -f /etc/os-release ]
         . /etc/os-release
 
         case "$ID" in
-            debian | ubuntu)
+            debian | ubuntu | linuxmint)
                 if [[ ! -x /usr/bin/ansible ]]; then
                     echo "[i] Install Ansible"
                     sudo apt install --no-install-recommends -y ansible

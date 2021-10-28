@@ -1,4 +1,4 @@
 ---
 # for controlling package installs
-debian_like_distributions: ['Ubuntu', 'Debian']
+debian_like_distributions: ['Ubuntu', 'Debian', 'Linux Mint']
 arch_like_distributions: ['Archlinux', 'Manjaro']
