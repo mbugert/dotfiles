@@ -1,0 +1,56 @@
+---
+# see https://github.com/ansible/ansible/issues/34454#issuecomment-599156792
+- name: Check whether desktop fonts are installed
+  stat:
+    path: '{{ font_item }}'
+  loop:
+    - /usr/local/share/fonts/opentype/overpass
+    - /usr/local/share/fonts/opentype/overpass-mono
+    - /usr/local/share/fonts/opentype/fontawesome
+  loop_control:
+    loop_var: font_item
+  register: fonts_stat
+
+- name: Install desktop fonts
+  become: yes
+  shell: '{{ role_path }}/files/theme/install_fonts.sh'
+  when: fonts_stat.results | rejectattr('stat.exists') | list
+
+# building the elementary-xfce icon theme requires dependencies
+- name: Install icon theme build dependencies for Debian/Ubuntu
+  become: yes
+  package:
+    name:
+      - optipng
+      - libgtk-3-dev
+    state: present
+  when: ansible_facts['distribution'] in debian_like_distributions
+
+- name: Install icon theme build dependencies for Arch/Manjaro
+  become: yes
+  package:
+    name:
+      - optipng
+      - gtk3
+    state: present
+  when: ansible_facts['distribution'] in arch_like_distributions
+
+- name: Check whether GTK3 icon theme is installed
+  stat:
+    path: '{{ icon_item }}'
+  loop:
+    - /usr/local/share/icons/elementary-xfce
+  loop_control:
+    loop_var: icon_item
+  register: icons_stat
+
+- name: Install GTK3 icon theme
+  become: yes
+  shell: '{{ role_path }}/files/theme/install_icon_theme.sh'
+  when: icons_stat.results | rejectattr('stat.exists') | list
+
+- name: Symlink configuration files
+  include_tasks: make_symlinks.yaml
+  vars:
+    symlinks:
+      - { dest: '~/.config/gtk-3.0/settings.ini', src_name: 'theme/gtk-3.0_settings.ini' }

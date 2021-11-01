@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cd /tmp
+
 # overpass font: https://github.com/RedHatBrand/Overpass
 wget https://github.com/RedHatOfficial/Overpass/releases/download/v3.0.5/overpass-3.0.5.zip
 unzip -qq overpass-3.0.5.zip && rm overpass-3.0.5.zip

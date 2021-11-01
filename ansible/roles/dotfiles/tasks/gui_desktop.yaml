@@ -59,7 +59,6 @@
   vars:
     symlinks:
       - { dest: '~/.config/autorandr', src_name: 'autorandr' }
-      - { dest: '~/.config/gtk-3/settings.ini', src_name: 'theme/gtk-3_settings.ini' }
       - { dest: '~/.config/i3', src_name: 'i3' }
       - { dest: '~/.config/picom.conf', src_name: 'picom/picom.conf' }
       - { dest: '~/.config/polybar', src_name: 'polybar' }
@@ -97,6 +96,8 @@
   shell: whoami
   register: whoami_output
   changed_when: false
+
+# if this fails, just do `systemctl enable i3lock-fancy-rapid@$USER.service`
 - name: Enable i3lock systemd service for user {{ whoami_output.stdout }}
   become: yes
   systemd:

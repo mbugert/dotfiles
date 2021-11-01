@@ -12,7 +12,7 @@
 - include_tasks: '{{ gui_item }}'
   loop:
     - gui_desktop.yaml
-    - gui_fonts.yaml
+    - gui_theme.yaml
     - gui_tools.yaml
   loop_control:
     loop_var: gui_item
