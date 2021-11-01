@@ -133,8 +133,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
 
-# write PATH env var after all changes from above
-export PATH
+
 
 #------ aliases ------
 
@@ -176,3 +175,10 @@ alias gt="git log --oneline --graph --color --all --decorate"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias grh="git reset --hard"
+
+# more aliases
+alias tm="tmux"
+
+
+#------ write PATH env var after all changes from above ------
+export PATH
