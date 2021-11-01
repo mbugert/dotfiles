@@ -90,18 +90,18 @@
   include_tasks: make_symlinks_sudo.yaml
   vars:
     symlinks:
-      - { dest: '/etc/systemd/system/i3-lock-fancy-rapid@.service', src_name: 'lock_sleep_hibernate/i3-lock-fancy-rapid@.service' }
+      - { dest: '/etc/systemd/system/i3lock-fancy-rapid@.service', src_name: 'lock_sleep_hibernate/i3lock-fancy-rapid@.service' }
       - { dest: '/etc/systemd/logind.conf', src_name: 'lock_sleep_hibernate/logind.conf' }
       - { dest: '/etc/systemd/sleep.conf', src_name: 'lock_sleep_hibernate/sleep.conf' }
 - name: Determine current username
   shell: whoami
   register: whoami_output
   changed_when: false
-- name: Enable i3-lock systemd service for user {{ whoami_output.stdout }}
+- name: Enable i3lock systemd service for user {{ whoami_output.stdout }}
   become: yes
   systemd:
     enabled: yes
-    name: 'i3-lock-fancy-rapid@{{ whoami_output.stdout }}.service'
+    name: 'i3lock-fancy-rapid@{{ whoami_output.stdout }}.service'
 
 - name: Symlink mimeapps preferences
   include_tasks: make_symlinks.yaml
