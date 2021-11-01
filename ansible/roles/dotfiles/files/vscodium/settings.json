@@ -1,9 +1,10 @@
 {
     "workbench.colorTheme": "Visual Studio Light",
     "workbench.tree.indent": 25,
-    "workbench.startupEditor": "welcomePage",
     "editor.renderWhitespace": "all",
     "security.workspace.trust.untrustedFiles": "open",
     "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "markdown.extension.list.indentationSize": "inherit",
+    "markdown.extension.toc.levels": "2..6"
 }
