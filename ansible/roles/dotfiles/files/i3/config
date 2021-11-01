@@ -228,7 +228,9 @@ bindsym XF86RotateWindows exec --no-startup-id thinkpad-rotate
 
 
 ############################ Per-app adjustments ###############################
-# See https://github.com/ValveSoftware/steam-for-linux/issues/1040
+
+# Set a bunch of windows floating:
+# Steam, see https://github.com/ValveSoftware/steam-for-linux/issues/1040
 for_window [class="^Steam$" title="^Friends$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
@@ -240,13 +242,16 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
-# floating modifier for applets started via polybar
+# applets started via polybar
 for_window [title="^Volume Control"] floating enable
 for_window [class="Yad" title="yad-calendar"] floating enable
 
-# keepass should be floating and small
+# keepass should be floating and as small as possible
 for_window [class="(?i)keepassxc?"] floating enable
 for_window [class="(?i)keepassxc?"] resize set 400 350
+
+# Cisco VPN
+for_window [class="(?i)Cisco AnyConnect Secure Mobility Client"] floating enable
 
 # Title bar icons
 for_window [class="(?i)firefox"] title_format "<tt></tt><span foreground='#FF6611'>  </span><tt> </tt>%title"
@@ -265,7 +270,7 @@ for_window [class="(?i)GIMP"] title_format "<tt></tt><span foreground='#dfc900'>
 for_window [class="(?i)Krita"] title_format "<tt></tt><span foreground='#3e45ff'>  </span><tt> </tt>%title"
 for_window [class="(?i)xournal"] title_format "<tt></tt><span foreground='#ffaad5'>  </span><tt> </tt>%title"
 for_window [class="(?i)vlc"] title_format "<tt></tt><span background='#ffffff' foreground='#fe8106'>  </span><tt> </tt>%title"
-for_window [class="(?i)(Element|Telegram)"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
+for_window [class="(?i)(Element|Telegram|Slack)"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="(?i)keepassxc?"] title_format "<tt></tt><span foreground='#ffffff'>  </span><tt> </tt>%title"
 for_window [class="jetbrains-pycharm"] title_format "<tt></tt><span foreground='#2bee13'>  </span><tt> </tt>PyCharm: %title"
 for_window [class="(?i)meld"] title_format "<tt></tt><span foreground='#2758e2'>  </span><tt> </tt>Meld: %title"
