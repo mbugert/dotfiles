@@ -77,7 +77,7 @@
     group: root
     mode: 0644
     regexp: '^.*intel_backlight'
-    line: 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", GROUP="video", MODE="0664", RUN+="/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness"'
+    line: 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", GROUP="video", MODE="0664", RUN+="/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness" RUN+="/bin/chgrp video /sys/class/backlight/intel_backlight/brightness"'
 - name: Adding existing user '{{ ansible_user_id }}' to group video
   become: yes
   user:
