@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Source: https://raw.githubusercontent.com/mbrubeck/todo.txt-cli/master/todo.actions.d/edit
-# It's GPL licensed, so: http://www.gnu.org/copyleft/gpl.html
+# Source: https://github.com/mbrubeck/todo.txt-cli/
+# GPL licensed
 
 case $1 in
 "usage")
@@ -17,7 +17,7 @@ case $1 in
     FILE=$TODO_DIR/$2
   fi
   if [ -n "$EDITOR" ]; then
-    $EDITOR $FILE
+    $EDITOR "$FILE"
   else
     echo "Error: The EDITOR environment variable is not set"
   fi
