@@ -32,6 +32,7 @@
   vars:
     symlinks:
       - { dest: '~/.zshrc', src_name: 'zsh/.zshrc' }
+      - { dest: '~/.zprofile', src_name: 'zsh/.zprofile' }
       - { dest: '~/.config/zsh/powerlevel10k/p10k_mb.zsh', src_name: 'zsh/p10k_mb.zsh' }
 
 - name: Determine zsh binary location

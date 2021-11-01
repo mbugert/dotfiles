@@ -129,11 +129,10 @@ fi
 #------ pyenv setup ------
 export PYENV_ROOT="$HOME/.local/bin/pyenv"
 path+=("$PYENV_ROOT/bin")
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
 
-
+#------ write PATH env var after all changes from above, and run scripts depending on it ------
+export PATH
+eval "$(pyenv init -)"
 
 #------ aliases ------
 
@@ -178,7 +177,3 @@ alias grh="git reset --hard"
 
 # more aliases
 alias tm="tmux"
-
-
-#------ write PATH env var after all changes from above ------
-export PATH
