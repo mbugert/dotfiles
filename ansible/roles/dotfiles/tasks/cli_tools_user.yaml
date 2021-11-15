@@ -23,6 +23,7 @@
       - fzf
       - hugo
       - iperf3
+      - jq
       - neofetch
       - pandoc
       - pdfgrep
