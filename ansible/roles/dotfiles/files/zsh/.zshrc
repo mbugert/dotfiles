@@ -162,9 +162,9 @@ _tw()
 }
 compdef _tw tw
 
-# todotxt aliases for whiteboard.md editing
-alias tew="t edit whiteboard.md"
-alias twew="tw edit whiteboard.md"
+# todotxt aliases for directly editing todo.txt file
+alias tet="t edit todo.txt"
+alias twet="tw edit todo.txt"
 
 # git aliases
 alias gs="git status"
