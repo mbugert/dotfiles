@@ -166,6 +166,9 @@ bindsym $mod+l exec --no-startup-id i3lock-fancy-rapid 11 3
 bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus left
 
+# Move entire *W*orkspace to the next output
+bindsym $mod+w move workspace to output next
+
 # Quick launches
 bindsym $mod+e exec thunar
 bindsym $mod+f exec firefox
