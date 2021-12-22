@@ -248,7 +248,7 @@ for_window [class="Yad" title="yad-calendar"] floating enable
 
 # keepass should be floating and as small as possible
 for_window [class="(?i)keepassxc?"] floating enable
-for_window [class="(?i)keepassxc?"] resize set 400 350
+for_window [class="(?i)keepassxc?"] resize set 756 488
 
 # Cisco VPN
 for_window [class="(?i)Cisco AnyConnect Secure Mobility Client"] floating enable
