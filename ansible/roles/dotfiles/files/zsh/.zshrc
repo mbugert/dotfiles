@@ -177,3 +177,5 @@ alias grh="git reset --hard"
 
 # more aliases
 alias tm="tmux"
+# convert all HEIC images in current folder into JPG, needs imagemagick 7 compiled with libheif
+alias convheic="ls *.HEIC -1 | sed -e 's/\.HEIC$//' | xargs -I {} convert {}.HEIC {}.JPG"
