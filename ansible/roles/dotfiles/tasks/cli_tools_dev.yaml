@@ -48,3 +48,9 @@
     name: "{{ ansible_user_id }}"
     groups: docker
     append: true
+
+- name: Roll out docker daemon.json
+  include_tasks: make_symlinks_sudo.yaml
+  vars:
+    symlinks:
+      - { dest: '/etc/docker/daemon.json', src_name: 'docker/daemon.json' }
