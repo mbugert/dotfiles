@@ -1,10 +1,17 @@
 #!/bin/sh
 
 # source: https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-wifionice
-# commit a0c485c565f1fd6c73047837000027cf2d84b91e
+# commit: tbd, waiting for PR merge
+
+icon=""
 
 if [ "$(iwgetid -r)" = "WIFIonICE" ]; then
     wifionice=$(curl -sf https://iceportal.de/api1/rs/status)
+
+    if [ "$(echo "$wifionice" | jq -e 2>/dev/null)" != 0 ]; then
+        echo "$icon In-train portal unreachable"
+        exit 0
+    fi
 
     if [ "$(echo "$wifionice" | jq .connection)" = "true" ]; then
         wifionice_speed=$(echo "$wifionice" | jq .speed)
@@ -30,7 +37,7 @@ if [ "$(iwgetid -r)" = "WIFIonICE" ]; then
             station_delay=""
         fi
 
-        echo " $station_arrival$station_delay - $station_name, Gl. $station_track$wifionice_speed"
+        echo "$icon $station_arrival$station_delay - $station_name, Gl. $station_track$wifionice_speed"
     fi
 else
     echo ""
