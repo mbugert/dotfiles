@@ -168,12 +168,18 @@ alias twet="tw edit todo.txt"
 
 # git aliases
 alias gs="git status"
+alias gsi="git status --ignored"
 alias ga="git add"
 alias gl="git log"
 alias gt="git log --oneline --graph --color --all --decorate"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias grh="git reset --hard"
+alias gbl="git branch --list"
+alias grm="git remote"
+alias gspu="git stash push"
+alias gspo="git stash pop"
+alias gsls="git stash list"
 
 # more aliases
 alias tm="tmux"
