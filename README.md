@@ -11,6 +11,7 @@ My stuff. Notable parts:
     * [picom](https://github.com/yshui/picom)
     * [redshift](https://github.com/jonls/redshift)
     * exponential screen brightness (for greater control over the low brightness region)
+    * [tailscale polybar integration and rofi menu](https://github.com/mbugert/tailscale-polybar-rofi)
 * CLI:
     * `zsh` with
         * [powerlevel10k](https://github.com/romkatv/powerlevel10k), lean style

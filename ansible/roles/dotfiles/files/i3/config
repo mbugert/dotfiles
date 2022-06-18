@@ -184,6 +184,9 @@ bindsym $mod+m [floating] move scratchpad
 
 # Cycle through scratchpad windows
 bindsym $mod+Shift+m scratchpad show
+
+# Choose VPN config
+bindsym $mod+Shift+v exec --no-startup-id $HOME/.config/scripts/choose_vpn_config.sh
 ################################################################################
 
 

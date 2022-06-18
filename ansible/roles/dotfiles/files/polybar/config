@@ -59,7 +59,7 @@ font-2 = FontAwesome5Free:style=Solid:size=10;1
 ; not used: polypomo
 modules-left = i3 info-wifionice
 modules-center =
-modules-right = pulseaudio xkeyboard wlan eth temperature backlight battery date powermenu
+modules-right = pulseaudio xkeyboard info-tailscale wlan eth temperature backlight battery date powermenu
 
 tray-position = center
 tray-padding = 2
@@ -339,6 +339,14 @@ screenchange-reload = true
 type = custom/script
 exec = ~/.config/polybar/info-wifionice.sh
 interval = 10
+
+[module/info-tailscale]
+type = custom/script
+exec = ~/.config/polybar/info-tailscale.sh
+interval = 10
+
+format-underline = #b77006
+click-right = $HOME/.config/scripts/choose_vpn_config.sh
 
 [global/wm]
 margin-top = 5
