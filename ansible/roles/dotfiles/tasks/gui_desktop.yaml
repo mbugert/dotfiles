@@ -3,6 +3,7 @@
   become: yes
   package:
     name:
+      - ddcutil
       - feh
       - guake
       - i3-wm
@@ -81,7 +82,8 @@
   become: yes
   user:
     name: '{{ ansible_user_id }}'
-    groups: video
+    # also add to i2c group to permit changing brightness of external displays via DDC
+    groups: video, i2c
     append: yes
 
 # lock/sleep/hibernate settings

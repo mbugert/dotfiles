@@ -10,7 +10,10 @@ My stuff. Notable parts:
     * [feh](https://feh.finalrewind.org/)
     * [picom](https://github.com/yshui/picom)
     * [redshift](https://github.com/jonls/redshift)
-    * exponential screen brightness (for greater control over the low brightness region)
+    * [custom screen brightness controls](ansible/roles/dotfiles/files/scripts/screen_brightness.py):
+        * with exponentially-spaced brightness steps (for greater control over the low brightness region)
+        * can control laptop backlight (via ACPI) and external screens (via DDC/CI)
+        * can specify screen luminance to make sure effective luminance is homogenous across screens of different brands
     * [tailscale polybar integration and rofi menu](https://github.com/mbugert/tailscale-polybar-rofi)
 * CLI:
     * `zsh` with

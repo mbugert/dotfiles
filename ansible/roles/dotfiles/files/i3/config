@@ -221,8 +221,12 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86AudioMicMute exec --no-startup-id thinkpad-mutemic
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec $HOME/.config/scripts/screen_brightness.py -inc
-bindsym XF86MonBrightnessDown exec $HOME/.config/scripts/screen_brightness.py -dec
+bindsym XF86MonBrightnessUp         exec $HOME/.config/scripts/screen_brightness.py --steps 20 --lvds    --no-ddc --increase
+bindsym XF86MonBrightnessDown       exec $HOME/.config/scripts/screen_brightness.py --steps 20 --lvds    --no-ddc --decrease
+bindsym Shift+XF86MonBrightnessUp   exec $HOME/.config/scripts/screen_brightness.py --steps 10 --lvds    --ddc    --increase
+bindsym Shift+XF86MonBrightnessDown exec $HOME/.config/scripts/screen_brightness.py --steps 10 --lvds    --ddc    --decrease
+bindsym Ctrl+XF86MonBrightnessUp    exec $HOME/.config/scripts/screen_brightness.py --steps 10 --no-lvds --ddc    --increase
+bindsym Ctrl+XF86MonBrightnessDown  exec $HOME/.config/scripts/screen_brightness.py --steps 10 --no-lvds --ddc    --decrease
 
 # Auto-adapt screen layout
 bindsym XF86Display exec --no-startup-id $HOME/.config/scripts/update_screens.sh
