@@ -28,6 +28,7 @@
       become: yes
       package:
         name:
+          - anki
           - jabref
           - pdfsam
           - virtualbox
@@ -46,6 +47,7 @@
     - name: Install GUI tools from AUR
       kewlfft.aur.aur:
         name:
+          - anki-official-binary-bundle
           - jabref-latest
           - google-chrome
           - pdfsam

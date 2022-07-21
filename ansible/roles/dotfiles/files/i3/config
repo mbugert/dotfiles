@@ -173,6 +173,7 @@ bindsym $mod+w move workspace to output next
 bindsym $mod+e exec thunar
 bindsym $mod+f exec firefox
 bindsym $mod+c exec codium
+bindsym $mod+k exec --no-startup-id XDG_DATA_HOME=$HOME/Documents/Drive/Work/Learning anki
 
 # Screenshots (full screen and window)
 bindsym Print exec xfce4-screenshooter -f
@@ -187,6 +188,10 @@ bindsym $mod+Shift+m scratchpad show
 
 # Choose VPN config
 bindsym $mod+Shift+v exec --no-startup-id $HOME/.config/scripts/choose_vpn_config.sh
+
+# xkill
+bindsym --release $mod+Shift+k exec xkill
+
 ################################################################################
 
 
