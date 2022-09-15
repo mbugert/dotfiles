@@ -57,7 +57,7 @@ font-1 = Overpass:fontformat=opentype:size=9:weight=heavy
 font-2 = FontAwesome5Free:style=Solid:size=10;1
 
 ; not used: polypomo
-modules-left = i3 info-wifionice
+modules-left = i3 info-trainwifi
 modules-center =
 modules-right = pulseaudio xkeyboard info-tailscale wlan eth temperature backlight battery date powermenu
 
@@ -335,9 +335,9 @@ screenchange-reload = true
 ;compositing-border = over
 ;pseudo-transparency = false
 
-[module/info-wifionice]
+[module/info-trainwifi]
 type = custom/script
-exec = ~/.config/polybar/info-wifionice.sh
+exec = ~/.config/polybar/info-trainwifi.sh
 interval = 10
 
 [module/info-tailscale]
