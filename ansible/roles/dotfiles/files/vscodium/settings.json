@@ -7,5 +7,6 @@
     "explorer.confirmDelete": false,
     "markdown.extension.list.indentationSize": "inherit",
     "markdown.extension.toc.levels": "2..6",
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "editor.copyWithSyntaxHighlighting": false
 }
