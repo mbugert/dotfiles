@@ -160,7 +160,7 @@ hide_edge_borders smart
 
 ################################# More binds ###################################
 # Lockscreen
-bindsym $mod+l exec --no-startup-id i3lock-fancy-rapid 11 3
+bindsym $mod+l exec --no-startup-id i3lock-fancy -- scrot --silent
 
 # Tab through current windows on workspace
 bindsym $mod+Tab focus right

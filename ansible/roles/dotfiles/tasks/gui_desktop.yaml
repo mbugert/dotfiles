@@ -9,6 +9,7 @@
       - i3-wm
       - redshift
       - rofi
+      - scrot
       - xfce4-terminal
       - yad
     state: present
@@ -19,6 +20,7 @@
       become: yes
       package:
         name:
+          - i3lock-fancy
           - redshift-gtk  # included in redshift for Arch
           - xbacklight
         state: present
@@ -31,7 +33,6 @@
       debug:
         msg: |
           Install manually:
-          - https://github.com/yvbbrjdr/i3lock-fancy-rapid
           - https://github.com/polybar/polybar
           - https://github.com/yshui/picom
   when: ansible_facts['distribution'] in debian_like_distributions
@@ -48,7 +49,7 @@
       kewlfft.aur.aur:
         name:
           - autorandr-git
-          - i3lock-fancy-rapid-git
+          - i3lock-fancy-git
           - picom-git
           - polybar
         use: makepkg
@@ -91,7 +92,7 @@
   include_tasks: make_symlinks_sudo.yaml
   vars:
     symlinks:
-      - { dest: '/etc/systemd/system/i3lock-fancy-rapid@.service', src_name: 'lock_sleep_hibernate/i3lock-fancy-rapid@.service' }
+      - { dest: '/etc/systemd/system/i3lock-fancy@.service', src_name: 'lock_sleep_hibernate/i3lock-fancy@.service' }
       - { dest: '/etc/systemd/logind.conf', src_name: 'lock_sleep_hibernate/logind.conf' }
       - { dest: '/etc/systemd/sleep.conf', src_name: 'lock_sleep_hibernate/sleep.conf' }
 - name: Determine current username
@@ -99,12 +100,12 @@
   register: whoami_output
   changed_when: false
 
-# if this fails, just do `systemctl enable i3lock-fancy-rapid@$USER.service`
+# if this fails, just do `systemctl enable i3lock-fancy@$USER.service`
 - name: Enable i3lock systemd service for user {{ whoami_output.stdout }}
   become: yes
   systemd:
     enabled: yes
-    name: 'i3lock-fancy-rapid@{{ whoami_output.stdout }}.service'
+    name: 'i3lock-fancy@{{ whoami_output.stdout }}.service'
 
 - name: Symlink mimeapps preferences
   include_tasks: make_symlinks.yaml

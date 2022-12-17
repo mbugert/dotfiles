@@ -8,7 +8,7 @@ Before=sleep.target
 User=%I
 Type=forking
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/i3lock-fancy-rapid 11 3
+ExecStart=/usr/bin/i3lock-fancy -- scrot --silent
  
 [Install]
 WantedBy=sleep.target

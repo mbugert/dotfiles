@@ -4,7 +4,7 @@ My stuff. Notable parts:
     * [i3wm](https://i3wm.org/)
         * primarily using the tabbed layout
         * title bar icons for common apps
-        * [i3lock-fancy-rapid](https://github.com/yvbbrjdr/i3lock-fancy-rapid)
+        * [i3lock-fancy](https://github.com/meskarune/i3lock-fancy)
         * hassle-free keyboard layout switching using i3 modes, triggered via `$mod+Shift+Escape`
     * [polybar](https://github.com/polybar/polybar)
     * [feh](https://feh.finalrewind.org/)
