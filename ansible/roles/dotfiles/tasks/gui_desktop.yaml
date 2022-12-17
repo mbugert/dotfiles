@@ -20,21 +20,13 @@
       become: yes
       package:
         name:
+          - autorandr
           - i3lock-fancy
+          - picom
           - polybar
           - redshift-gtk  # included in redshift for Arch
           - xbacklight
         state: present
-    - name: Install autorandr
-      become: yes
-      pip:
-        name: autorandr
-        state: present
-    - name: Notify about manual installation for Debian/Ubuntu
-      debug:
-        msg: |
-          Install manually:
-          - https://github.com/yshui/picom
   when: ansible_facts['distribution'] in debian_like_distributions
 
 - name: Install desktop tools for Arch/Manjaro
