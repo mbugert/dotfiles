@@ -21,6 +21,7 @@
       package:
         name:
           - i3lock-fancy
+          - polybar
           - redshift-gtk  # included in redshift for Arch
           - xbacklight
         state: present
@@ -33,7 +34,6 @@
       debug:
         msg: |
           Install manually:
-          - https://github.com/polybar/polybar
           - https://github.com/yshui/picom
   when: ansible_facts['distribution'] in debian_like_distributions
 
@@ -51,7 +51,7 @@
           - autorandr-git
           - i3lock-fancy-git
           - picom-git
-          - polybar
+          - polybar-git
         use: makepkg
         state: present
   when: ansible_facts['distribution'] in arch_like_distributions
