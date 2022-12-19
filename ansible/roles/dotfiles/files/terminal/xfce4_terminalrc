@@ -1,10 +1,9 @@
 [Configuration]
-FontUseSystem=TRUE
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
-MiscBellUrgent=FALSE
+MiscBellUrgent=TRUE
 MiscBordersDefault=TRUE
-MiscCursorBlinks=FALSE
+MiscCursorBlinks=TRUE
 MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
 MiscDefaultGeometry=80x24
 MiscInheritGeometry=FALSE
@@ -29,4 +28,9 @@ MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=FALSE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 ScrollingLines=2500
+FontUseSystem=TRUE
+ColorBackground=#000000000000
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+BackgroundImageShading=0,520000
+BackgroundDarkness=0,800000
 

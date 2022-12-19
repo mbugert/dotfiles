@@ -208,7 +208,7 @@ exec_always --no-startup-id $HOME/.config/scripts/launch_polybar_feh.sh
 exec --no-startup-id redshift-gtk
 
 # Bit of eyecandy
-exec --no-startup-id picom --transparent-clipping --experimental-backends
+exec --no-startup-id picom --experimental-backends
 
 # Dropdown terminal
 exec --no-startup-id guake
