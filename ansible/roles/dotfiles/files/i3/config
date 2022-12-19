@@ -5,8 +5,8 @@
 # set correct custom keyboard layout on startup
 exec --no-startup-id setxkbmap mb -variant basic
 
-# Or Mod4, in case we need an alternative for remote i3 sessions
-set $mod Mod3
+# We used to use Mod3, but newer keyboards don't have it
+set $mod Mod4
 
 font pango:Overpass Heavy, Font Awesome 8
 
