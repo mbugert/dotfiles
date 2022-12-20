@@ -18,5 +18,5 @@
     loop_var: gui_item
   tags: gui
 
-- include_tasks: device_tablet.yaml
-  when: '"Tablet" in ansible_facts["product_name"]'
+- include_tasks: 'device_specific.yaml'
+- include_tasks: "device_specific/{{ lookup('env', 'MACHINE_ID') }}.yaml"

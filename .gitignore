@@ -1,0 +1,4 @@
+__pycache__
+
+# symlinked from ansible/roles/dotfiles/files/device_specific/*/lvds_screens.py
+ansible/roles/dotfiles/files/scripts/lvds_screens.py

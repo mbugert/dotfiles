@@ -38,6 +38,15 @@ if [ -f /etc/os-release ]
 echo "[i] Install Ansible Dependencies"
 ansible-galaxy collection install -r requirements.yaml
 
+# Export a short machine identifier, which can later be used to load
+# device-specific i3, polybar, and other config settings.
+echo "[i] Determine Machine Identifier"
+if [ -f /var/lib/dbus/machine-id ]; then
+    export MACHINE_ID=$(cat /var/lib/dbus/machine-id | sha256sum | cut -c -3)
+else
+    export MACHINE_ID=missingno
+fi
+
 # Run main playbook
 echo "[i] Run Playbook"
 ansible-playbook ansible/dotfiles.yaml --ask-become-pass

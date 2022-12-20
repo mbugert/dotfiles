@@ -61,7 +61,12 @@
       - { dest: '~/.config/xfce4/terminal/terminalrc', src_name: 'terminal/xfce4_terminalrc' }
 
 # For setting display brightness via ACPI, one needs write permissions to /sys after every boot. One solution is udev, see https://wiki.archlinux.org/title/Backlight#Udev_rule
-- name: Add display backlight udev rule
+- name: Check for Intel backlight
+  stat:
+    path: /sys/class/backlight/intel_backlight/
+  register: intel_backlight_result
+- name: Add Intel backlight udev rule
+  when: intel_backlight_result.stat.exists
   become: yes
   lineinfile:
     path: /etc/udev/rules.d/60-backlight.rules
@@ -71,6 +76,23 @@
     mode: 0644
     regexp: '^.*intel_backlight'
     line: 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", GROUP="video", MODE="0664", RUN+="/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness" RUN+="/bin/chgrp video /sys/class/backlight/intel_backlight/brightness"'
+# same thing, but for AMD
+- name: Check for AMD backlight
+  stat:
+    path: /sys/class/backlight/amdgpu_bl0/
+  register: amdgpu_bl0_result
+- name: Add AMD backlight udev rule
+  when: amdgpu_bl0_result.stat.exists
+  become: yes
+  lineinfile:
+    path: /etc/udev/rules.d/60-backlight.rules
+    create: yes
+    owner: root
+    group: root
+    mode: 0644
+    regexp: '^.*amdgpu_bl0'
+    line: 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl0", GROUP="video", MODE="0664", RUN+="/bin/chmod g+w /sys/class/backlight/amdgpu_bl0/brightness" RUN+="/bin/chgrp video /sys/class/backlight/amdgpu_bl0/brightness"'
+# for the above rules to work, the user needs to belong to group video
 - name: Adding existing user '{{ ansible_user_id }}' to group video
   become: yes
   user:

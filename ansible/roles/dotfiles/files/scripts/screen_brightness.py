@@ -12,43 +12,38 @@
 #   manufacturers, etc.
 
 
-from dataclasses import dataclass, field
-from math import log10
-from pathlib import Path
-
 import argparse
-import sys
+import dataclasses
+import math
+import os
+import pathlib
 import subprocess
+import sys
+
+# device-dependent file
+try:
+    from lvds_screens import LVDS_SCREENS
+except ImportError:
+    LVDS_SCREENS = []
 
 
-SCREENS = {
-    "lvds": [
-        # finding min_brightness requires trial & error, like this:
-        # `echo 30 > /sys/class/backlight/intel_backlight/brightness`
-        {"backlight_location": Path("/sys/class/backlight/intel_backlight"),
-         "min_brightness": 30,
-         "min_nits": 1,
-         "max_nits": 300}
-    ],
-    "ddc": [
-        {"bus_number": 8,
-         #"model_name": "LA2205",
-         "min_nits": 40,
-         "max_nits": 85}
-    ]
-}
-
+DDC_SCREENS = [
+    {"bus_number": 8,
+    #"model_name": "LA2205",
+    "min_nits": 40,
+    "max_nits": 85}
+]
 
 # Apart from using __post_init__, we don't mutate screen objects, so this
 # qualifies as a "specialized use case" as mentioned in the python docs
 # for using unsafe_hash.
-@dataclass(unsafe_hash=True)
+@dataclasses.dataclass(unsafe_hash=True)
 class LVDSScreen:
-    backlight_location: Path
+    backlight_location: pathlib.Path
     min_nits: int
     max_nits: int
     min_brightness: int
-    max_brightness: int = field(init=False)
+    max_brightness: int = dataclasses.field(init=False)
     
     def __post_init__(self):
         # read max brightness value
@@ -72,7 +67,7 @@ class LVDSScreen:
             subprocess.run(["echo", str(brightness)], stdout=f)
 
 
-@dataclass(unsafe_hash=True)
+@dataclasses.dataclass(unsafe_hash=True)
 class DDCScreen:
     # TODO switch to selection by model name, which didn't work for my setup
     bus_number: int
@@ -103,7 +98,6 @@ class DDCScreen:
                str(brightness)]
         subprocess.run(cmd)
 
-
 def change_brightness(args):
     num_steps = args.steps
 
@@ -113,11 +107,17 @@ def change_brightness(args):
     screens = []
     ref = None
     if args.lvds:
-        lvds_screens = [LVDSScreen(**kwargs) for kwargs in SCREENS.get("lvds", [])]
+        lvds_screens = [LVDSScreen(**kwargs) for kwargs in LVDS_SCREENS]
+        if not lvds_screens:
+            print("Cannot change LVDS screen brightness: no LVDS screens available.")
+            sys.exit(1)
         ref = lvds_screens[0]
         screens += lvds_screens
     if args.ddc:
-        ddc_screens = [DDCScreen(**kwargs) for kwargs in SCREENS.get("ddc", [])]
+        ddc_screens = [DDCScreen(**kwargs) for kwargs in DDC_SCREENS]
+        if not ddc_screens:
+            print("Cannot change DDC screen brightness: no DDC screens available.")
+            sys.exit(1)
         if not args.lvds:
             ref = ddc_screens[0]
         screens += ddc_screens
@@ -141,11 +141,11 @@ def change_brightness(args):
         bright_infimum = s.min_brightness + pcnt_infimum * bright_range
 
         # switch to log domain
-        log_bright_ranges[s] = log10(bright_infimum), log10(bright_supremum)
+        log_bright_ranges[s] = math.log10(bright_infimum), math.log10(bright_supremum)
 
     # compute current brightness step from the reference screen
     ref_log_bright_min, ref_log_bright_max = log_bright_ranges[ref]
-    step = round(num_steps * (log10(ref.get_brightness()) - ref_log_bright_min)
+    step = round(num_steps * (math.log10(ref.get_brightness()) - ref_log_bright_min)
                / (ref_log_bright_max - ref_log_bright_min))
 
     if args.increase:
