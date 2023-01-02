@@ -6,6 +6,7 @@
   include_tasks: make_symlinks.yaml
   vars:
     symlinks:
+      - { dest: '~/.config/scripts/update_screens.sh', src_name: 'device_specific/{{ machine_id }}/update_screens.sh' }
       - { dest: '~/.config/scripts/lvds_screens.py', src_name: 'device_specific/{{ machine_id }}/lvds_screens.py' }
       - { dest: '~/.config/polybar/polybar_config_additions', src_name: 'device_specific/{{ machine_id }}/polybar_config_additions' }
       - { dest: '~/.config/i3/i3_config_additions', src_name: 'device_specific/{{ machine_id }}/i3_config_additions' }
