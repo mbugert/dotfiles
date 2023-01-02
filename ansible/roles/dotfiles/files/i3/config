@@ -192,6 +192,9 @@ bindsym --release $mod+Shift+k exec xkill
 
 
 ################################# Autostarts ###################################
+# Reload xrandr
+exec_always --no-startup-id $HOME/.config/scripts/update_screens.sh
+
 # Use polybar in favor of i3bar, and feh for wallpapers
 exec_always --no-startup-id $HOME/.config/scripts/launch_polybar_feh.sh
 
