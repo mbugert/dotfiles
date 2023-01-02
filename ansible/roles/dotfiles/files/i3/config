@@ -151,9 +151,6 @@ mode "$keyboard_layout" {
 }
 bindsym $mod+Shift+Escape mode "$keyboard_layout"
 
-# Use tabbed layout by default
-workspace_layout tabbed
-
 # Save 2px on screen borders
 hide_edge_borders smart
 
@@ -191,7 +188,6 @@ bindsym $mod+Shift+v exec --no-startup-id $HOME/.config/scripts/choose_vpn_confi
 
 # xkill
 bindsym --release $mod+Shift+k exec xkill
-
 ################################################################################
 
 
@@ -206,9 +202,6 @@ exec_always --no-startup-id $HOME/.config/scripts/launch_polybar_feh.sh
 
 # Pleasant working when it's late
 exec --no-startup-id redshift-gtk
-
-# Bit of eyecandy
-exec --no-startup-id picom --experimental-backends
 
 # Dropdown terminal
 exec --no-startup-id guake
@@ -236,9 +229,6 @@ bindsym Ctrl+XF86MonBrightnessDown  exec $HOME/.config/scripts/screen_brightness
 # Auto-adapt screen layout
 bindsym XF86Display exec --no-startup-id $HOME/.config/scripts/update_screens.sh
 bindsym Shift+XF86Display exec --no-startup-id arandr
-
-# Rotate screen with rotate screen button
-bindsym XF86RotateWindows exec --no-startup-id thinkpad-rotate
 ################################################################################
 
 
@@ -293,3 +283,6 @@ for_window [class="(?i)jabref"] title_format "<tt></tt><span foreground='#b7a6f2
 for_window [class="(?i)texstudio"] title_format "<tt></tt><span foreground='#aaaaaa'>  </span><tt> </tt>TeXstudio: %title"
 for_window [class="(?i)(x2goclient|nxagent)"] title_format "<tt></tt><span foreground='#246ed8'>  </span><tt> </tt>%title"
 ################################################################################
+
+# include device-specific additions
+include ~/.config/i3/i3_config_additions

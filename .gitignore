@@ -3,3 +3,4 @@ __pycache__
 # symlinked from device-specific files:
 ansible/roles/dotfiles/files/scripts/lvds_screens.py
 ansible/roles/dotfiles/files/polybar/polybar_config_additions
+ansible/roles/dotfiles/files/i3/i3_config_additions

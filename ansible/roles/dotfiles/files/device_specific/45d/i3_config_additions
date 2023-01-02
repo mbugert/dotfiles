@@ -1,0 +1,7 @@
+# Use split layout by default
+workspace_layout default
+
+################################# Autostarts ###################################
+# Bit of eyecandy
+exec --no-startup-id picom --experimental-backends
+################################################################################
