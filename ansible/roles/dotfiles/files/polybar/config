@@ -56,7 +56,6 @@ font-0 = Overpass Mono:fontformat=opentype:size=9:weight=light
 font-1 = Overpass:fontformat=opentype:size=9:weight=heavy
 font-2 = FontAwesome5Free:style=Solid:size=10;1
 
-; not used: polypomo
 modules-left = i3 info-trainwifi
 modules-center =
 modules-right = pulseaudio xkeyboard info-tailscale wifi eth temperature backlight battery date powermenu
@@ -280,21 +279,6 @@ menu-2-0 = power off
 menu-2-0-exec = systemctl poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
-
-; see https://github.com/unode/polypomo
-[module/polypomo]
-type = custom/script
-
-exec = /opt/polypomo/polypomo
-tail = true
-
-label = %output%
-label-underline = #ce0704
-click-left = /opt/polypomo/polypomo toggle
-click-right = /opt/polypomo/polypomo end
-click-middle = /opt/polypomo/polypomo lock
-scroll-up = /opt/polypomo/polypomo time +60
-scroll-down = /opt/polypomo/polypomo time -60
 
 [module/xkeyboard]
 type = internal/xkeyboard
