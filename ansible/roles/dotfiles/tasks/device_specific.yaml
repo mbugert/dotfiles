@@ -2,8 +2,9 @@
 - name: Get machine ID from environment variable
   set_fact: machine_id="{{ lookup('env', 'MACHINE_ID') }}"
 
-- name: Symlink device-specific LVDS screens script
+- name: Symlink device-specific files
   include_tasks: make_symlinks.yaml
   vars:
     symlinks:
       - { dest: '~/.config/scripts/lvds_screens.py', src_name: 'device_specific/{{ machine_id }}/lvds_screens.py' }
+      - { dest: '~/.config/polybar/polybar_config_additions', src_name: 'device_specific/{{ machine_id }}/polybar_config_additions' }

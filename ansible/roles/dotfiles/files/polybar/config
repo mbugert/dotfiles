@@ -59,7 +59,7 @@ font-2 = FontAwesome5Free:style=Solid:size=10;1
 ; not used: polypomo
 modules-left = i3 info-trainwifi
 modules-center =
-modules-right = pulseaudio xkeyboard info-tailscale wlan eth temperature backlight battery date powermenu
+modules-right = pulseaudio xkeyboard info-tailscale wifi eth temperature backlight battery date powermenu
 
 tray-position = center
 tray-padding = 2
@@ -111,38 +111,15 @@ label-urgent-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
-[module/wlan]
-type = internal/network
-interface = wlp3s0
-interval = 3.0
+; To be included from device-specific config:
+; [module/wifi]
+; type = internal/network
+; ...
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = " %ifname% disconnected"
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-;ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = enp0s25
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+; To be included from device-specific config:
+; [module/eth]
+; type = internal/network
+; ...
 
 [module/date]
 type = internal/date
@@ -161,11 +138,10 @@ format-underline = #0a6cf5
 
 label = "%{A1:$HOME/.config/scripts/show_calendar.sh --popup:}%date% %time%%{A}"
 
-[module/backlight]
-type = internal/backlight
-card = intel_backlight
-label = " %percentage%%"
-label-underline = #e6672b
+; To be included from device-specific config:
+; [module/backlight]
+; type = internal/backlight
+; ...
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -351,5 +327,8 @@ click-right = $HOME/.config/scripts/choose_vpn_config.sh
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+; Include device-specific config additions
+include-file = $HOME/.config/polybar/polybar_config_additions
 
 ; vim:ft=dosini
