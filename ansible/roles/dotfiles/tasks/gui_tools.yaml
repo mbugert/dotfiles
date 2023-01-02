@@ -4,6 +4,7 @@
   package:
     name:
       - arandr
+      - chromium
       - clusterssh
       - diffpdf
       - firefox
@@ -15,7 +16,9 @@
       - meld
       - obs-studio
       - openscad
+      - pdfarranger
       - peek
+      - puddletag
       - remmina
       - texstudio
       - vlc
