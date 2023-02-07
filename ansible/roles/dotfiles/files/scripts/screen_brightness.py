@@ -55,7 +55,11 @@ class LVDSScreen:
             self.max_brightness = None
 
     def get_brightness(self) -> int:
-        cmd = ["cat", self.backlight_location / "actual_brightness"]
+        # Technically, "actual_brightness" would be the right value to check
+        # here, however we had situations where actual_brightness < brightness,
+        # in which case increasing just set "brightness" to a value it was
+        # already at, deadlocking the whole script.
+        cmd = ["cat", self.backlight_location / "brightness"]
         try:
             result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
             return int(result.stdout)
@@ -161,8 +165,19 @@ def change_brightness(args):
         log_bright_new = log_bright_min + new_step / num_steps * \
                              (log_bright_max - log_bright_min)
         bright_new = round(10 ** log_bright_new)
-        bright_new_clamped = max(min(bright_new, s.max_brightness),
-                                 s.min_brightness)
+
+        # Towards the lower brightness region, one step in log space can be
+        # smaller than 1 brightness step when converted back to linear space.
+        # Address this by always moving at least one brightness step.
+        if args.increase:
+            bright_new_corr = max(bright_new, s.get_brightness() + 1)
+        elif args.decrease:
+            bright_new_corr = min(bright_new, s.get_brightness() - 1)
+        else:
+            raise AssertionError
+
+        bright_new_clamped = max(min(bright_new_corr, s.max_brightness),
+                            s.min_brightness)
         s.set_brightness(bright_new_clamped)
 
 
