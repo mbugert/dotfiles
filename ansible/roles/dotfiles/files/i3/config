@@ -156,8 +156,10 @@ hide_edge_borders smart
 
 
 ################################# More binds ###################################
-# Lockscreen
-bindsym $mod+l exec --no-startup-id i3lock-fancy -- scrot --silent
+# Lockscreen -- switched from i3lock-fancy to i3lock because it works
+# together with xss-lock for lid closing.
+#bindsym $mod+l exec --no-startup-id i3lock-fancy -- scrot --silent
+bindsym $mod+l exec --no-startup-id loginctl lock-session
 
 # Tab through current windows on workspace
 bindsym $mod+Tab focus right
@@ -202,6 +204,9 @@ exec_always --no-startup-id $HOME/.config/scripts/launch_polybar_feh.sh
 # bar {
 #        status_command i3status
 # }
+
+# Use xss-lock to start i3lock when system goes to sleep (i.e. lid close)
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Pleasant working when it's late
 exec --no-startup-id redshift-gtk
