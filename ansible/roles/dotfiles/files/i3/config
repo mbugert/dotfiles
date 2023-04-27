@@ -171,8 +171,9 @@ bindsym $mod+w move workspace to output next
 # Quick launches
 bindsym $mod+e exec thunar
 bindsym $mod+f exec firefox
+bindsym $mod+p exec firefox --private-window
 bindsym $mod+c exec codium
-bindsym $mod+k exec --no-startup-id XDG_DATA_HOME=$HOME/Documents/Drive/Work/Learning anki
+bindsym $mod+k exec --no-startup-id XDG_DATA_HOME=$HOME/Documents/Drive/Work/Learning/Anki anki
 
 # Screenshots (full screen and window)
 bindsym Print exec xfce4-screenshooter -f
