@@ -153,18 +153,9 @@ _t()
 }
 compdef _t t
 
-alias tw="todo-txt -t -d $HOME/.config/todotxt/todo_work.cfg"
-_tw()
-{
-    alias todo.sh='todo-txt -d $HOME/.config/todotxt/todo_work.cfg'
-    setopt ALIASES
-    _todo.sh "$@"
-}
-compdef _tw tw
-
-# todotxt aliases for directly editing todo.txt file
-alias tet="t edit todo.txt"
-alias twet="tw edit todo.txt"
+# todotxt aliases for editing todo.txt and backlog in a text editor
+alias te="t edit todo.txt"
+alias tb="t edit idea_backlog.md && t edit todo_backlog.md"
 
 # git aliases
 alias gs="git status"
@@ -184,4 +175,4 @@ alias gsls="git stash list"
 # more aliases
 alias tm="tmux"
 # convert all HEIC images in current folder into JPG, needs imagemagick 7 compiled with libheif
-alias convheic="ls *.HEIC -1 | sed -e 's/\.HEIC$//' | xargs -I {} convert {}.HEIC {}.JPG"
+alias convheic="ls *.HEIC -1 | sed -e 's/\.HEIC$//' | xargs -I {} convert {}.HEIC {}.jpg"
