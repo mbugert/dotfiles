@@ -1,6 +1,3 @@
-# Use tabbed layout by default
-workspace_layout tabbed
-
 ################################ Bind FN keys ##################################
 # Rotate screen with rotate screen button
 bindsym XF86RotateWindows exec --no-startup-id thinkpad-rotate
