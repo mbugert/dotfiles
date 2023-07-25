@@ -175,4 +175,5 @@ alias gsls="git stash list"
 # more aliases
 alias tm="tmux"
 # convert all HEIC images in current folder into JPG, needs imagemagick 7 compiled with libheif
-alias convheic="ls *.HEIC -1 | sed -e 's/\.HEIC$//' | xargs -I {} convert {}.HEIC {}.jpg"
+alias heic2jpg="find . -iname '*.heic' | parallel -eta convert {} {.}.jpg"
+alias png2webp="find . -iname '*.png' | parallel -eta cwebp {} -o {.}.webp -lossless"
