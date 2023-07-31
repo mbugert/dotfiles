@@ -28,10 +28,12 @@ except ImportError:
 
 
 DDC_SCREENS = [
-    {"bus_number": 8,
-    #"model_name": "LA2205",
-    "min_nits": 40,
-    "max_nits": 85}
+    {"model_name": "LG ULTRAFINE",
+     "min_nits": 50,
+     "max_nits": 400},
+    {"model_name": "LA2205",
+     "min_nits": 40,
+     "max_nits": 85},
 ]
 
 # Apart from using __post_init__, we don't mutate screen objects, so this
@@ -51,7 +53,7 @@ class LVDSScreen:
         try:
             result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
             self.max_brightness = int(result.stdout)
-        except CalledProcessError:
+        except subprocess.CalledProcessError:
             self.max_brightness = None
 
     def get_brightness(self) -> int:
@@ -60,21 +62,17 @@ class LVDSScreen:
         # in which case increasing just set "brightness" to a value it was
         # already at, deadlocking the whole script.
         cmd = ["cat", self.backlight_location / "brightness"]
-        try:
-            result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
-            return int(result.stdout)
-        except CalledProcessError:
-            return None
+        result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
+        return int(result.stdout)
 
-    def set_brightness(self, brightness: int):
+    def set_brightness(self, brightness: int) -> None:
         with (self.backlight_location / "brightness").open("w") as f:
             subprocess.run(["echo", str(brightness)], stdout=f)
 
 
 @dataclasses.dataclass(unsafe_hash=True)
 class DDCScreen:
-    # TODO switch to selection by model name, which didn't work for my setup
-    bus_number: int
+    model_name: str
     min_nits: int
     max_nits: int
     min_brightness: int = 1
@@ -83,24 +81,41 @@ class DDCScreen:
     def get_brightness(self) -> int:
         cmd = ["ddcutil",
                "--terse",
-               f"--bus={str(self.bus_number)}",
+               "--model",
+               self.model_name,
                "getvcp",
                "10"]
-        try:
-            result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)
-            # "VCP 10 C 42 100", where 42 is the current value
-            return int(result.stdout.split()[-2])
-        except CalledProcessError:
-            return None
+        result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True,
+                                text=True)
+        # "VCP 10 C 42 100", where 42 is the current value
+        return int(result.stdout.strip().split()[-2])
 
-    def set_brightness(self, brightness: int):
+    def set_brightness(self, brightness: int) -> None:
         cmd = ["ddcutil",
                "--noverify",
-               f"--bus={str(self.bus_number)}",
+               "--model",
+               self.model_name,
                "setvcp",
                "10",
                str(brightness)]
         subprocess.run(cmd)
+
+    def is_available(self) -> bool:
+        cmd = ["ddcutil",
+               "--terse",
+               "--model",
+               self.model_name,
+               "getvcp",
+               "d6"]
+        try:
+            result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True,
+                                    text=True)
+            # "VCP D6 SNC x01", where x01 means powered on
+            is_powered_on = result.stdout.strip().split()[-1] == "x01"
+            return is_powered_on
+        except subprocess.CalledProcessError:
+            return False
+
 
 def change_brightness(args):
     num_steps = args.steps
@@ -118,7 +133,12 @@ def change_brightness(args):
         ref = lvds_screens[0]
         screens += lvds_screens
     if args.ddc:
-        ddc_screens = [DDCScreen(**kwargs) for kwargs in DDC_SCREENS]
+        ddc_screens = []
+        for kwargs in DDC_SCREENS:
+            screen = DDCScreen(**kwargs)
+            # quite slow, but it works
+            if screen.is_available():
+                ddc_screens.append(screen)
         if not ddc_screens:
             print("Cannot change DDC screen brightness: no DDC screens available.")
             sys.exit(1)
@@ -149,7 +169,10 @@ def change_brightness(args):
 
     # compute current brightness step from the reference screen
     ref_log_bright_min, ref_log_bright_max = log_bright_ranges[ref]
-    step = round(num_steps * (math.log10(ref.get_brightness()) - ref_log_bright_min)
+    ref_brightness = ref.get_brightness()
+    if ref_brightness is None:
+        raise ValueError(f"Cannot determine brightness of {ref}.")
+    step = round(num_steps * (math.log10(ref_brightness) - ref_log_bright_min)
                / (ref_log_bright_max - ref_log_bright_min))
 
     if args.increase:
