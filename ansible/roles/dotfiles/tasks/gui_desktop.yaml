@@ -9,7 +9,6 @@
       - i3-wm
       - redshift
       - rofi
-      #- scrot
       - xfce4-terminal
       - xss-lock
       - yad
@@ -22,7 +21,6 @@
       package:
         name:
           - autorandr
-          #- i3lock-fancy
           - picom
           - polybar
           - redshift-gtk  # included in redshift for Arch
@@ -42,7 +40,6 @@
       kewlfft.aur.aur:
         name:
           - autorandr-git
-          #- i3lock-fancy-git
           - picom-git
           - polybar-git
         use: makepkg
@@ -113,20 +110,12 @@
   include_tasks: make_symlinks_sudo.yaml
   vars:
     symlinks:
-      #- { dest: '/etc/systemd/system/i3lock-fancy@.service', src_name: 'lock_sleep_hibernate/i3lock-fancy@.service' }
       - { dest: '/etc/systemd/logind.conf', src_name: 'lock_sleep_hibernate/logind.conf' }
       - { dest: '/etc/systemd/sleep.conf', src_name: 'lock_sleep_hibernate/sleep.conf' }
 - name: Determine current username
   shell: whoami
   register: whoami_output
   changed_when: false
-
-# if this fails, just do `systemctl enable i3lock-fancy@$USER.service`
-- name: Enable i3lock systemd service for user {{ whoami_output.stdout }}
-  become: yes
-  systemd:
-    enabled: no
-    name: 'i3lock-fancy@{{ whoami_output.stdout }}.service'
 
 - name: Symlink mimeapps preferences
   include_tasks: make_symlinks.yaml

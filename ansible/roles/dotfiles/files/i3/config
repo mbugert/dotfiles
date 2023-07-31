@@ -161,7 +161,6 @@ hide_edge_borders smart
 ################################# More binds ###################################
 # Lockscreen -- switched from i3lock-fancy to i3lock because it works
 # together with xss-lock for lid closing.
-#bindsym $mod+l exec --no-startup-id i3lock-fancy -- scrot --silent
 bindsym $mod+l exec --no-startup-id loginctl lock-session
 
 # Tab through current windows on workspace
