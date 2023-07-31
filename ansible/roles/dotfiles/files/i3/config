@@ -211,9 +211,6 @@ exec_always --no-startup-id $HOME/.config/scripts/launch_polybar_feh.sh
 #        status_command i3status
 # }
 
-# Use xss-lock to start i3lock when system goes to sleep (i.e. lid close)
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
 # Pleasant working when it's late
 exec --no-startup-id redshift-gtk
 

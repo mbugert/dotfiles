@@ -1,4 +1,7 @@
 ################################ Bind FN keys ##################################
 # Rotate screen with rotate screen button
 bindsym XF86RotateWindows exec --no-startup-id thinkpad-rotate
+
+# Use xss-lock to start i3lock when system goes to sleep (i.e. lid close)
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --color=3f3f3f --nofork
 ################################################################################

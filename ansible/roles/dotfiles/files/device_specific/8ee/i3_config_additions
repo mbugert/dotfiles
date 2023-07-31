@@ -1,0 +1,4 @@
+################################# Autostarts ###################################
+# Use xss-lock to start i3lock when system goes to sleep (i.e. lid close)
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --color=0f2b46 --nofork
+################################################################################
