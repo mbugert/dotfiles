@@ -6,6 +6,7 @@
       - ddcutil
       - feh
       - guake
+      - i3lock
       - i3-wm
       - redshift
       - rofi
