@@ -1,40 +1,50 @@
 # dotfiles
-My stuff. Notable parts:
+My stuff.
+
+![screenshot](doc/screenshot.webp)
+_[Link to wallpaper](https://www.artstation.com/artwork/lx0BDk)_
+
+## Notable parts
 * GUI:
     * [i3wm](https://i3wm.org/)
         * primarily using the tabbed layout
-        * title bar icons for common apps
-        * [i3lock-fancy](https://github.com/meskarune/i3lock-fancy)
+        * makeshift title bar icons for common apps (before it [became a built-in feature](https://github.com/i3/i3/issues/905))
         * hassle-free keyboard layout switching using i3 modes, triggered via `$mod+Shift+Escape`
     * [polybar](https://github.com/polybar/polybar)
     * [feh](https://feh.finalrewind.org/)
+        * Wallpapers are chosen randomly from `${HOME}/Pictures/Wallpapers/`
     * [picom](https://github.com/yshui/picom)
-    * [redshift](https://github.com/jonls/redshift)
+    * [redshift](https://github.com/jonls/redshift), which keeps breaking for some reason
     * [custom screen brightness controls](ansible/roles/dotfiles/files/scripts/screen_brightness.py):
-        * with exponentially-spaced brightness steps (for greater control over the low brightness region)
+        * minimum brightness goes as low as the hardware permits
+        * brightness steps are exponential, for greater control over the low brightness region
         * can control laptop backlight (via ACPI) and external screens (via DDC/CI)
-        * can specify screen luminance to make sure effective luminance is homogenous across screens of different brands
+        * can specify screen luminance to make sure effective luminance is homogenous in multi-screen setups
     * [tailscale polybar integration and rofi menu](https://github.com/mbugert/tailscale-polybar-rofi)
+    * [rofimoji](https://github.com/fdw/rofimoji) emoji picker
 * CLI:
     * `zsh` with
         * [powerlevel10k](https://github.com/romkatv/powerlevel10k), lean style
         * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+        * [zsh-bd](https://github.com/Tarrasch/zsh-bd)
 
-## Usage / Setup
-* Have Debian/Ubuntu or Arch/Manjaro, and xfce4 desktop environment
-* Run:
-```bash
-git clone https://github.com/mbugert/dotfiles ~/dotfiles
-cd ~/dotfiles
-./setup.sh
-```
-* Debian/Ubuntu require manual installation of several tools (polybar, picom, and more). The setup script prints more detailed instructions.
-* Wallpapers are picked randomly from `${HOME}/Pictures/Wallpapers/`
+## Setup / Deployment
+* Deployment is **automated** through Ansible (with exceptions).
+* To support multiple devices, there are **device-specific tweaks** that are also deployed automatically: [setup.sh](setup.sh) puts `/var/lib/dbus/machine-id` into an env var that Ansible picks up to trigger device-specific [tasks](ansible/roles/dotfiles/tasks/main.yaml) and [config file inclusions](ansible/roles/dotfiles/tasks/device_specific.yaml).
+
+Steps:
+1. Have Debian/Ubuntu/Mint or Arch/Manjaro, and xfce4 desktop environment
+2. Run:
+   ```bash
+   git clone https://github.com/mbugert/dotfiles ~/dotfiles
+   cd ~/dotfiles
+   ./setup.sh
+   ```
+3. Things like VSCodium, MiKTeX, and Synology Drive need to be set up manually. There are Ansible tasks that print reminders for doing that.
 
 ## Todo
 * setup:
     * only change/check login shell if necessary
-    * install icon theme package (which?)
     * install all xfce4 desktop utilities
 * more in-depth tests on Arch/Manjaro
 
