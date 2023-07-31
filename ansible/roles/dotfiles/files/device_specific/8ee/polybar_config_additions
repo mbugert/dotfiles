@@ -1,3 +1,15 @@
+[colors]
+;background = ${xrdb:color0:#222}
+background = #333
+background-alt = #222
+background-lowpower = #116
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #4c9976
+secondary = #e60053
+alert = #bd2c40
+
 [module/wifi]
 type = internal/network
 interface = wlp1s0
