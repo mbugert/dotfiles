@@ -178,7 +178,7 @@ bindsym $mod+c exec codium
 bindsym $mod+k exec --no-startup-id XDG_DATA_HOME=$HOME/Documents/Drive/Work/Learning/Anki anki
 
 # emoJi selector
-bindsym $mod+Shift+j exec --no-startup-id rofimoji --skin-tone neutral --max-recent 0 --prompt "Emoji"
+bindsym $mod+Shift+j exec --no-startup-id rofimoji --skin-tone neutral --max-recent 0 --prompt "Emoji" --selector-args "-theme Arc-Dark"
 
 # Screenshots (full screen and window)
 bindsym Print exec xfce4-screenshooter -f
