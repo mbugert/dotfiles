@@ -22,6 +22,8 @@
       - remmina
       - texstudio
       - vlc
+      - xdotool
+      - xsel
       - x2goclient
     state: present
 

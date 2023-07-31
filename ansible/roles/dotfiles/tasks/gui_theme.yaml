@@ -54,3 +54,7 @@
   vars:
     symlinks:
       - { dest: '~/.config/gtk-3.0/settings.ini', src_name: 'theme/gtk-3.0_settings.ini' }
+
+- name: Install rofimoji emoji selector
+  community.general.pipx:
+    name: rofimoji
