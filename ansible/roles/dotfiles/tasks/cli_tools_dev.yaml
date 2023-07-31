@@ -5,7 +5,6 @@
     name:
       - build-essential
       - docker
-      - docker-compose-plugin
       - pipx
       - python3
       - python3-dev
