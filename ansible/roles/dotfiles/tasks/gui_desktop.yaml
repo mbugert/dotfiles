@@ -9,7 +9,7 @@
       - i3-wm
       - redshift
       - rofi
-      - scrot
+      #- scrot
       - xfce4-terminal
       - xss-lock
       - yad

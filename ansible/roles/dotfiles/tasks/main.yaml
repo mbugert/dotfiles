@@ -5,6 +5,7 @@
     - cli_tools_user.yaml
     - cli_zsh.yaml
     - cli_todotxt.yaml
+    - cli_tailscale.yaml
   loop_control:
     loop_var: cli_item
   tags: cli

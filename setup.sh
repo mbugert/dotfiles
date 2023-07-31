@@ -49,6 +49,6 @@ fi
 
 # Run main playbook
 echo "[i] Run Playbook"
-ansible-playbook ansible/dotfiles.yaml --ask-become-pass
+cd ansible && ansible-playbook dotfiles.yaml --ask-become-pass
 
 echo "[i] Done."

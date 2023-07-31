@@ -1,0 +1,33 @@
+---
+- name: Check if Tailscale is installed
+  shell: which tailscale
+  register: which_tailscale
+  failed_when: which_tailscale.rc > 1
+  changed_when: false
+
+- when: which_tailscale.rc == 1
+  block:
+    - name: Install Tailscale for Debian/Ubuntu
+      block:
+        - name: Notify about manual installation for Debian/Ubuntu
+          debug:
+            msg: >
+              Install manually:
+              - https://tailscale.com/download
+      when: ansible_facts['distribution'] in debian_like_distributions
+
+    - name: Install Tailscale for Arch/Manjaro
+      become: yes
+      package:
+        name:
+          - tailscale
+        state: present
+      when: ansible_facts['distribution'] in arch_like_distributions
+
+# We run this elsewhere already, but run it again here to ensure the VPN
+# script truly is rolled out.
+- name: Symlink Tailscale switching script
+  include_tasks: make_symlinks.yaml
+  vars:
+    symlinks:
+      - { dest: '~/.config/scripts', src_name: 'scripts' }

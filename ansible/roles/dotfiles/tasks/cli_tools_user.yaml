@@ -45,7 +45,7 @@
     name:
       # important ones
       - iputils-ping
-      - p7zip-full
+      - 7zip
       - unrar-free
       - network-manager
 
