@@ -17,6 +17,7 @@
       - wget
 
       # others
+      - abcde
       - cpulimit
       - curl
       - foremost
@@ -56,20 +57,32 @@
     state: present
   when: ansible_facts['distribution'] in debian_like_distributions
 
-- name: Install user CLI tools from Arch core/extra repositories
-  become: yes
-  package:
-    name:
-      # important ones
-      - iputils
-      - p7zip
-      - unrar
-      - networkmanager
+- block:
+  - name: Install user CLI tools from Arch core/extra repositories
+    become: yes
+    package:
+      name:
+        # important ones
+        - iputils
+        - p7zip
+        - unrar
+        - networkmanager
 
-      # others
-      - cpupower
-      - libwebp
-      - parallel
-      - wireless_tools
-    state: present
+        # others
+        - cpupower
+        - libwebp
+        - parallel
+        - wireless_tools
+      state: present
+  - name: Install user CLI tools from AUR
+    kewlfft.aur.aur:
+      name: abcde
+      use: makepkg
+      state: present
   when: ansible_facts['distribution'] in arch_like_distributions
+
+- name: Symlink abcde configuration file
+  include_tasks: make_symlinks.yaml
+  vars:
+    symlinks:
+      - { dest: '~/.abcde.conf', src_name: 'abcde/.abcde.conf' }
