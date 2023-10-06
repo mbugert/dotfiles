@@ -34,6 +34,9 @@ DDC_SCREENS = [
     {"model_name": "LA2205",
      "min_nits": 40,
      "max_nits": 85},
+    {"model_name": "LG HDR 4K",
+     "min_nits": 90,
+     "max_nits": 400},
 ]
 
 # Apart from using __post_init__, we don't mutate screen objects, so this
@@ -172,6 +175,8 @@ def change_brightness(args):
     ref_brightness = ref.get_brightness()
     if ref_brightness is None:
         raise ValueError(f"Cannot determine brightness of {ref}.")
+    # minimum brightness must be 1, otherwise the log op fails
+    ref_brightness = max(ref_brightness, 1)
     step = round(num_steps * (math.log10(ref_brightness) - ref_log_bright_min)
                / (ref_log_bright_max - ref_log_bright_min))
 

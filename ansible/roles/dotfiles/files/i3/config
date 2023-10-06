@@ -272,6 +272,17 @@ for_window [class="(?i)Cisco AnyConnect Secure Mobility Client"] floating enable
 # WINE emulated desktops
 for_window [title=".* - Wine desktop$"] floating enable
 
+# Zoom popups, and keeping Zoom from grabbing focus
+for_window [title="^(?i)zoom$"] floating enable
+no_focus [class="zoom"]
+focus_on_window_activation urgent
+
+# 1password should be floating and small
+for_window [class="(?i)1password?"] floating enable
+for_window [class="(?i)1password?"] resize set 800 580
+# and Yubico Authenticator too
+for_window [class="(?i)authenticator?"] floating enable
+
 # Title bar icons
 for_window [class="(?i)firefox"] title_format "<tt></tt><span foreground='#FF6611'>  </span><tt> </tt>%title"
 for_window [class="(?i)google-chrome"] title_format "<tt></tt><span foreground='#FFFFFF'>  </span><tt> </tt>%title"

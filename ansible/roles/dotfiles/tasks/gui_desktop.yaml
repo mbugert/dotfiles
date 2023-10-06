@@ -63,7 +63,8 @@
   include_tasks: make_symlinks.yaml
   vars:
     symlinks:
-      - { dest: '~/.local/bin/powersave', src_name: 'scripts/powersave' }
+      - { dest: '~/.local/bin/powersave', src_name: 'scripts/powersave.sh' }
+      - { dest: '~/.local/bin/meet', src_name: 'scripts/meet.sh' }
 
 # For setting display brightness via ACPI, one needs write permissions to /sys after every boot. One solution is udev, see https://wiki.archlinux.org/title/Backlight#Udev_rule
 - name: Check for Intel backlight
