@@ -98,6 +98,21 @@ elif [ "$current_wifi" = "NormandieTrainConnecte" ]; then
     speed_kph_pretty="${speed_kph%.*} kph"
 
     echo "$icon $scheduled_arrival_pretty$delay_pretty - $station_name - $speed_kph_pretty"
+elif [ "$current_wifi" = "EurostarTrainsWiFi" ]; then
+    # Wi-FI in Eurostar trains: https://help.eurostar.com/faq/be-en/question/How-does-wi-fi-work-on-board
+    # See also https://hannover.ccc.de/~nexus/dbwifi/index.html :(
+
+    if ! { position=$(curl --silent --fail https://www.ombord.info/api/jsonp/position/); } then
+        echo "$icon In-train portal unreachable"
+        exit 0
+    fi
+
+    # convert train speed from m/s to km/h
+    speed_mps=$(echo "$position" | cut --zero-terminated --characters=2- | tr --delete ');' | jq --raw-output .speed)
+    speed_kph=$(echo "scale=0; $speed_mps * 3.6" | bc)
+    speed_kph_pretty="${speed_kph%.*} kph"
+
+    echo "$icon $speed_kph_pretty"
 else
     echo ""
 fi
