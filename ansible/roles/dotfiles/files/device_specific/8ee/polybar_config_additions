@@ -45,6 +45,6 @@ format-disconnected =
 
 [module/backlight]
 type = internal/backlight
-card = amdgpu_bl0
+card = amdgpu_bl1
 label = " %percentage%%"
 label-underline = #e6672b

@@ -85,10 +85,10 @@
 # same thing, but for AMD
 - name: Check for AMD backlight
   stat:
-    path: /sys/class/backlight/amdgpu_bl0/
-  register: amdgpu_bl0_result
+    path: /sys/class/backlight/amdgpu_bl1/
+  register: amdgpu_bl1_result
 - name: Add AMD backlight udev rule
-  when: amdgpu_bl0_result.stat.exists
+  when: amdgpu_bl1_result.stat.exists
   become: yes
   lineinfile:
     path: /etc/udev/rules.d/60-backlight.rules
@@ -96,8 +96,8 @@
     owner: root
     group: root
     mode: 0644
-    regexp: '^.*amdgpu_bl0'
-    line: 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl0", GROUP="video", MODE="0664", RUN+="/bin/chmod g+w /sys/class/backlight/amdgpu_bl0/brightness" RUN+="/bin/chgrp video /sys/class/backlight/amdgpu_bl0/brightness"'
+    regexp: '^.*amdgpu_bl1'
+    line: 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", GROUP="video", MODE="0664", RUN+="/bin/chmod g+w /sys/class/backlight/amdgpu_bl1/brightness" RUN+="/bin/chgrp video /sys/class/backlight/amdgpu_bl1/brightness"'
 # for the above rules to work, the user needs to belong to group video
 - name: Adding existing user '{{ ansible_user_id }}' to video, i2c groups
   become: yes
