@@ -40,6 +40,7 @@ Steps:
    cd ~/dotfiles
    ./setup.sh
    ```
+   Options appended to `./setup.sh` are passed to `ansible-playbook`. For example, use `./setup.sh --tags cli` for headless systems.
 3. Things like VSCodium, MiKTeX, and Synology Drive need to be set up manually. There are Ansible tasks that print reminders for doing that.
 
 ## Todo
