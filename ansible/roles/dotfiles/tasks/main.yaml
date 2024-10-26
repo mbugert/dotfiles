@@ -1,5 +1,9 @@
 ---
-- include_tasks: '{{ cli_item }}'
+- include_tasks:
+    file: '{{ cli_item }}'
+    apply:
+      tags:
+        - cli
   loop:
     - cli_tools_dev.yaml
     - cli_tools_user.yaml
@@ -8,16 +12,20 @@
     - cli_tailscale.yaml
   loop_control:
     loop_var: cli_item
-  tags: cli
+  tags: always
 
-- include_tasks: '{{ gui_item }}'
+- include_tasks:
+    file: '{{ gui_item }}'
+    apply:
+      tags:
+        - gui
   loop:
     - gui_desktop.yaml
     - gui_theme.yaml
     - gui_tools.yaml
   loop_control:
     loop_var: gui_item
-  tags: gui
+  tags: always
 
 - include_tasks: 'device_specific.yaml'
 - include_tasks: "device_specific/{{ lookup('env', 'MACHINE_ID') }}.yaml"
