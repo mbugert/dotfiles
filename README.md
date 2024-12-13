@@ -22,6 +22,7 @@ _[Link to wallpaper](https://www.artstation.com/artwork/lx0BDk)_
         * can specify screen luminance to make sure effective luminance is homogenous in multi-screen setups
     * [tailscale polybar integration and rofi menu](https://github.com/mbugert/tailscale-polybar-rofi)
     * [rofimoji](https://github.com/fdw/rofimoji) emoji picker
+    * rofi picker for screen layouts ([autorandr](https://github.com/phillipberndt/autorandr) profiles)
 * CLI:
     * `zsh` with
         * [powerlevel10k](https://github.com/romkatv/powerlevel10k), lean style
