@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-autorandr --change --default mobile_8ee
+autorandr --change --default 8ee_mobile
 $HOME/.config/scripts/launch_polybar.sh

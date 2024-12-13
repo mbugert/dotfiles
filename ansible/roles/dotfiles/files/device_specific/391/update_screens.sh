@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-autorandr --change --default mobile_391
+autorandr --change --default 391_mobile
 $HOME/.config/scripts/launch_polybar.sh
 
 # if the built-in monitor is used in the current configuration, ensure the touchscreen only maps to the built-in monitor
